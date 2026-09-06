@@ -213,8 +213,16 @@
         <li><strong>업데이트하는 분</strong>은 개인 프롬프트와 템플릿이 있다면, 업데이트 <strong>전에</strong>
             엑셀을 열어 <strong>DRM AI 메뉴 안에서, 그 기능을 쓰는 각 메뉴마다 직접 백업</strong>하세요.
             <strong>자동으로 백업되지 않으며, 다른 프로그램이 대신해 주지도 않습니다.</strong></li>
-        <li>API 설정값, 모델 설정, 관리자용 메뉴는 <strong>절대 임의로 바꾸지 마세요.</strong>
-            이미 설정된 상태로 배포됩니다. 문제가 있으면 학교 관리자(배포자)에게 문의하세요.</li>
+        <li><strong>AI 기능을 쓰시려면 두 가지가 더 필요합니다</strong> —
+            <strong>① 올인원 메일 인증</strong>, <strong>② 본인 API 키 입력</strong> (<a href="#secC4">4-4</a>).
+            <strong>인증키는 메일로 신청해서 받는 것이라 회신에 보통 1~2일</strong> 걸립니다.
+            <strong>지금 바로 신청해 두시고</strong>, 기다리는 동안 설치를 진행하세요
+            (신청 방법은 <a href="#secC4a">4-4-1</a>).
+            <span class="small">받으신 파일에는 키가 <strong>이미 들어 있을 수도, 비어 있을 수도</strong> 있습니다.
+            엑셀에서 <strong>[안내 및 설정] → [인증 상태 확인(올인원 연동)]</strong> 을 열면 어느 쪽인지 바로 보입니다 —
+            비어 있으면 본인 키를 넣으시고, 들어 있으면 넣지 않으셔도 됩니다.
+            <strong>어느 쪽이든 인증은 각자 하셔야</strong> 합니다.
+            하이라이트·PDF 같은 일반 기능은 인증 없이 그대로 쓰실 수 있습니다.</span></li>
       </ol>
     </div>
 
@@ -236,6 +244,13 @@
             <li><a href="#secC1">4-1. 먼저 확인: DRM AI 메뉴가 보이나요?</a></li>
             <li><a href="#secC2">4-2. 빠른 실행 도구 모음에 등록</a></li>
             <li><a href="#secC3">4-3. 40번 [설명서 보기] 내용 1회 확인</a></li>
+            <li><a href="#secC4">4-4. AI 기능 열기 — ① 인증 → ② API 키 (설치·업데이트 모두)</a>
+              <ol>
+                <li><a href="#secC4a">4-4-1. 올인원 메일 인증 받기 (회신 1~2일)</a></li>
+                <li><a href="#secC4b">4-4-2. 본인 API 키 넣기</a></li>
+              </ol>
+            </li>
+            <li><a href="#secC5">4-5. 기관(학교) 키 잠금 (학교 관리자만)</a></li>
           </ol>
         </li>
         <li><a href="#sec5">5. 완료 확인 체크리스트</a></li>
@@ -291,8 +306,11 @@
 
       <h3>설치 프로그램이 대신 해 주는 일</h3>
       <p>아래 다섯 가지는 <strong>모두 자동으로</strong> 처리됩니다.
-         <strong>설치 자체를 위해</strong> 직접 하실 일은 <strong>마지막 한 가지뿐</strong>이며,
-         그 밖에 <a href="#secC">4장</a> 에서 <strong>한 번만 하면 되는 마무리 설정 2가지</strong>(빠른 실행 등록 · 안내문 확인)가 있습니다.</p>
+         <strong>설치 자체를</strong> 위해 직접 하실 일은 <strong>한 가지</strong>이고,
+         <a href="#secC">4장</a> 에서 <strong>인증과 API 키 입력</strong>을 마치셔야
+         AI 기능이 열립니다.
+         <strong>인증은 메일로 신청해 받는 것이라 회신에 1~2일</strong> 걸리니
+         <strong>설치를 기다리지 말고 먼저 신청</strong>해 두세요 (<a href="#secC4a">4-4-1</a>).</p>
       <table>
         <tr>
           <th style="width:50%"><span class="tag tag-auto">자동</span> 프로그램이 하는 일</th>
@@ -308,8 +326,11 @@
           </td>
           <td><strong>처음 설치라면</strong> 엑셀에서
               <strong>[찾아보기]로 <span class="mono">.xlam</span> 을 한 번 직접 등록</strong>
-              (<a href="#secC1">4-1</a> 에서 안내합니다)<br />
-              <span class="small">업데이트하시는 분은 이것도 하지 않으셔도 됩니다.</span></td>
+              (<a href="#secC1">4-1</a>)<br />
+              <span class="small">업데이트하시는 분은 이것은 하지 않으셔도 됩니다.</span>
+              <br /><br /><strong>설치·업데이트 모두</strong> —
+              ① 올인원에서 <strong>메일 인증</strong> (<a href="#secC4a">4-4-1</a>, <strong>회신 1~2일</strong>)
+              → ② <strong>본인 API 키 입력</strong> (<a href="#secC4b">4-4-2</a>)</td>
         </tr>
       </table>
       <p class="small">설치에 걸리는 시간은 약 10~30분이며 대부분은 기다리는 시간입니다.
@@ -344,13 +365,21 @@
         배포본에 따라 <span class="mono">DRM_AI_설치및업데이트.bat</span>(자동 설치 프로그램)과
         <span class="mono">python-3.13.9-amd64.exe</span>(파이썬 설치 파일).</p>
 
-      <h3>2-2) 올인원 도우미 설치 (처음 설치하는 분만)</h3>
+      <h3>2-2) 올인원 도우미 설치 <span class="small">(처음 설치하는 분만)</span> ·
+          <strong>인증 신청</strong> <span class="small">(처음 설치·업데이트 <strong>모두</strong>)</span></h3>
       <ol class="steps">
         <li>제공된 <span class="mono">All-in-One_Assistant_for_teacher_v0.0_setup.exe</span> 로 올인원 도우미를 설치합니다.</li>
         <li>설치가 끝나면 올인원을 한 번 실행해, <strong>40번 「서식 생성, DRM AI설치」</strong> 화면이
             정상적으로 열리는지만 확인하고 <strong>닫습니다.</strong></li>
       </ol>
-      <p class="small">이미 올인원을 쓰고 있다면 이 단계는 건너뛰어도 됩니다.</p>
+      <div class="note warn">
+        <strong>여기서 <span class="mono">[인증]</span> 신청까지 해 두세요 — 회신에 1~2일 걸립니다.</strong>
+        <p style="margin:8px 0 0">엑셀 추가 기능의 <strong>AI 기능이 올인원의 메일 인증에 묶여 있습니다.</strong>
+           올인원은 <strong>v7.3 이상</strong>이어야 하고, <strong>체험판이 아니라 정식 인증</strong>이어야 합니다.
+           <strong>이미 올인원을 쓰고 계시더라도</strong> 판이 낮거나 체험판 상태면 AI 기능이 열리지 않습니다.</p>
+        <p class="small" style="margin:6px 0 0">신청 절차(1·2·3단계)는 <a href="#secC4a">4-4-1</a> 에 그대로 적어 두었습니다.
+           <strong>회신을 기다리는 동안 설치를 계속하시면 됩니다</strong> — 인증이 없어도 설치와 일반 기능에는 지장이 없습니다.</p>
+      </div>
 
       <div class="note warn">
         <strong>지금은 여기까지만 하세요 — 40번 화면의 [설명서 보기]는 아직 따라 하지 않습니다.</strong>
@@ -523,7 +552,10 @@
               <td><a href="#secC3">4-3</a> 의 표와 같은 내용입니다.
                   <strong>[Word 신뢰 위치 등록]은 더 이상 필요 없고, 부록1·부록2 는 이미 끝난 내용</strong>입니다.</td></tr>
           <tr><td>5. (권장) 부록3 빠른 실행 등록</td><td><a href="#secC2">4-2</a> 와 같은 작업입니다.</td></tr>
-          <tr><td>6. API 값을 임의로 바꾸지 말 것</td><td>이 설명서 표지 · <a href="#sec5">5장</a> 의 주의와 같습니다.</td></tr>
+          <tr><td>6. API 값을 임의로 바꾸지 말 것</td>
+              <td><strong>지금은 달라졌습니다.</strong> 쓰시는 분이 <a href="#secC4b">4-4-2</a> 에서
+                  <strong>본인 API 키를 직접 넣으셔야</strong> 합니다.
+                  <span class="small">완료 화면 문구가 아직 옛 안내입니다.</span></td></tr>
         </table>
       </div>
       <p>아무 키나 누르면 창이 닫힙니다.
@@ -550,11 +582,12 @@
     <div id="secC" class="card">
       <h2>4. 설치가 끝난 뒤 마무리 설정</h2>
       <div class="note ok">
-        <strong>업데이트하신 분은 이 장을 건너뛰셔도 됩니다.</strong>
+        <strong>업데이트하신 분은 4-1 ~ 4-3 을 건너뛰셔도 됩니다. 단 <a href="#secC4">4-4</a> 는 꼭 보세요.</strong>
         <p class="small" style="margin:6px 0 0">4-1 의 <strong>[찾아보기] 등록</strong>도, 4-2 빠른 실행 등록도,
-           4-3 [설명서 보기] 확인도 <strong>모두 처음 설치하는 분만</strong> 하는 작업입니다.
-           업데이트하신 분은 <strong>엑셀을 새로 실행해 DRM AI 메뉴가 보이는지만</strong> 확인하고
-           바로 <a href="#sec5">5장 체크리스트</a> 로 가세요.</p>
+           4-3 [설명서 보기] 확인도 <strong>처음 설치하는 분만</strong> 하는 작업입니다.
+           업데이트하신 분은 <strong>엑셀을 새로 실행해 DRM AI 메뉴가 보이는지</strong> 확인한 뒤
+           <a href="#secC4">4-4</a> 로 가세요.
+           <strong>인증과 키를 넣는 방식이 예전과 모두 달라졌습니다.</strong></p>
       </div>
 
       <div class="note danger">
@@ -651,6 +684,289 @@
         실제로 <strong>새로 해야 하는 것은 부록3 빠른 실행 등록(<a href="#secC2">4-2</a>) 하나뿐</strong>입니다.
         같은 작업을 두 번 하지 않도록 표를 보며 확인하세요.
       </div>
+
+      <h3 id="secC4">4-4. AI 기능 열기 — <strong>① 인증 → ② API 키</strong> (처음 설치·업데이트 <strong>모두</strong>)</h3>
+
+      <div class="note danger">
+        <strong>AI 기능은 아래 두 가지를 <u>모두</u> 마쳐야 열립니다.</strong>
+        <table style="margin-top:8px">
+          <tr><th style="width:32%">① 올인원 <strong>메일 인증</strong></th>
+              <td>인증키를 <strong>메일로 신청해서 받습니다.</strong> <strong>회신에 보통 1~2일</strong> 걸립니다
+                  → <a href="#secC4a">4-4-1</a></td></tr>
+          <tr><th>② 본인 <strong>API 키 입력</strong></th>
+              <td>OpenAI·Gemini 키를 <strong>선생님이 직접</strong> 넣습니다. 몇 분이면 끝납니다
+                  → <a href="#secC4b">4-4-2</a></td></tr>
+        </table>
+        <p style="margin:8px 0 0"><strong>①이 먼저입니다.</strong> 인증이 없으면 <strong>키를 넣는 창조차 열리지 않습니다.</strong>
+           회신을 기다려야 하므로 <strong>설치와 상관없이 가장 먼저 신청해 두시는 편이 좋습니다.</strong></p>
+        <p class="small" style="margin:6px 0 0">하이라이트·PDF·파일 이름 바꾸기 같은 <strong>일반 기능은 인증 없이</strong> 그대로 쓰실 수 있습니다.
+           <strong>판매자·학교 관리자가 키를 넣어 준 파일</strong>을 받으셨더라도 <strong>인증은 각자</strong> 하셔야 합니다.</p>
+      </div>
+
+      <h4 id="secC4a">4-4-1. 올인원 교사 도우미에서 메일 인증 받기 <span class="small">(①)</span></h4>
+      <div class="note warn">
+        <strong>체험판으로는 AI 기능이 열리지 않습니다 — 반드시 <u>정식 인증</u>이어야 합니다.</strong>
+        <span class="small">(올인원 판이 낮아도 열리지 않습니다. 엑셀 연동은 올인원 v7.3부터입니다)</span>
+      </div>
+      <ol class="steps">
+        <li>올인원 교사 도우미를 실행하고 <strong><span class="mono">[인증]</span></strong> 단추를 누릅니다.</li>
+        <li><strong>1단계</strong> — 인증키를 받으실 <strong>메일 주소와 소속</strong>을 적습니다.</li>
+        <li><strong>2단계</strong> — 화면의 <strong>① 받는 사람 · ② 제목 · ③ 내용</strong> 을 각각 <strong>[복사]</strong> 해
+            메일 쓰기 창에 붙여 넣고 <strong>보냅니다.</strong>
+            <p class="small"><strong>받는 사람 주소는 ①에 이미 들어 있습니다</strong> — 따로 알아보지 않으셔도 됩니다.
+               메일은 <strong>선생님이 직접</strong> 보내셔야 합니다(화면의 단추가 메일 창을 열어 줍니다).</p></li>
+        <li><strong>회신을 기다립니다 — 보통 1~2일</strong>(휴일 제외). <strong>스팸함도 확인</strong>하세요.</li>
+        <li>회신 메일(<strong><span class="mono">[인증키 안내]</span></strong>)에 적힌 인증키를 <strong>3단계</strong> 칸에 붙여 넣고 인증합니다.</li>
+        <li>인증이 끝나면 <strong>이 PC 에 엑셀 연동 기록이 바로 저장됩니다.</strong> 따로 하실 일은 없습니다. 엑셀에서 <span class="mono">인증 기록 없음</span> 이 계속 나오면 올인원을 한 번 더 실행해 보세요(기록을 다시 씁니다).
+            <p class="small"><strong>예전 판 올인원에서 이미 인증하신 분</strong>은
+               <strong>v7.3 이상을 한 번 실행</strong>하셔야 이 기록이 만들어집니다.
+               아래 확인에서 <span class="mono">인증 기록 없음</span> 이 나오면 올인원을 한 번 실행해 보세요.</p></li>
+      </ol>
+      <div class="note warn">
+        <strong>같은 Windows 계정에서 하세요.</strong> 인증 기록은 <strong>올인원을 실행한 Windows 계정</strong>의 폴더에 저장됩니다.
+        관리자 계정으로 설치·인증하고 선생님 계정으로 엑셀을 쓰거나, 올인원을 <strong>"관리자 권한으로 실행"</strong> 하면
+        엑셀은 <span class="mono">인증 기록 없음</span> 이라고 합니다 — 엑셀을 쓰는 그 계정에서 올인원을 일반 실행해 인증하세요.
+        <span class="small">컴퓨터 이름을 바꾸거나 다른 PC 로 옮기면 기록이 맞지 않아 그 PC 에서 다시 인증해야 합니다.
+        부팅할 때마다 C 드라이브를 되돌리는 <strong>PC 복원 프로그램</strong>이 있는 교실 PC 는 인증·추가 기능·키가 매번 사라지므로
+        전산 담당자에게 사용자 폴더(AppData)를 복원 예외로 등록해 달라고 하세요.</span>
+      </div>
+      <div class="note ok">
+        <strong>확인:</strong> 엑셀에서 <strong>[안내 및 설정] → <span class="mono">[인증 상태 확인(올인원 연동)]</span></strong>
+        을 누르면 <strong>상태: 인증 확인됨</strong> 이 보입니다.
+        <span class="small">이 창은 <strong>인증 전에도 열립니다.</strong> 막혔을 때 이유도 한 줄로 알려 줍니다.</span>
+      </div>
+
+      <h4 id="secC4b">4-4-2. 본인 API 키 넣기 <span class="small">(②)</span></h4>
+      <div class="note danger">
+        <strong>예전의 "마지막 8자리 입력" 방식은 없어졌습니다.</strong>
+        <p style="margin:8px 0 0">이제는 <strong>쓰시는 분이 발급받은 키를 통째로</strong> 넣습니다.
+           리본의 옛 버튼 <span class="mono">[API 8자리 설정]</span>·<span class="mono">[API 전체 설정]</span> 은
+           <strong>더 이상 없습니다.</strong></p>
+      </div>
+
+      <div class="note">
+        <strong>키는 어디서 받나요? — 넣기 전에 먼저 발급받으셔야 합니다.</strong>
+        <table style="margin-top:8px">
+          <tr><th style="width:26%">무엇</th><th>어디서</th><th style="width:26%">요금</th></tr>
+          <tr><td><strong>OpenAI</strong> (GPT)</td>
+              <td><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></td>
+              <td rowspan="2"><strong>쓴 만큼 발급받은 분께 청구</strong>됩니다.
+                  결제 수단을 먼저 등록해야 키가 동작합니다.</td></tr>
+          <tr><td><strong>Gemini</strong> (선불 · 대부분 이것)</td>
+              <td><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">aistudio.google.com/app/apikey</a></td></tr>
+          <tr><td>Gemini (후불 · Agent Platform)</td>
+              <td>Google Cloud 콘솔 <span class="small">— 학교가 후불 계정을 쓰는 경우에만</span></td>
+              <td>학교 Google Cloud 계정으로 청구</td></tr>
+        </table>
+        <p class="small" style="margin:8px 0 0"><strong>둘 다 넣지 않으셔도 됩니다.</strong>
+           쓰시려는 기능에 맞는 것만 넣으세요 — <strong>DRM AI 메뉴의 [GPT 실행] 은 OpenAI 키</strong>,
+           <strong>[Gemini 실행]·절약 모드는 Gemini 키</strong>가 있어야 동작합니다.
+           <span class="small">(<a href="#sec5">5장</a> 체크리스트가 <strong>Gemini</strong> 기능으로 확인하도록 안내하므로,
+           특별한 이유가 없으면 <strong>Gemini 부터</strong> 넣으시면 됩니다.)</span>
+           <strong>학교 공용 키를 쓰신다면 발급받지 마시고 학교 관리자에게 문의</strong>하세요.</p>
+        <p class="small" style="margin:6px 0 0"><strong>정상적인 키는 이렇게 시작합니다</strong> —
+           OpenAI <span class="mono">sk-</span> · Gemini(선불·후불 모두) <span class="mono">AQ.</span> 또는 <span class="mono">AIza</span> ·
+           Grok <span class="mono">xai-</span>. 다르게 시작하면 다른 서비스의 키일 수 있습니다.</p>
+        <p class="small" style="margin:6px 0 0"><strong>쓴 금액이 궁금하시면</strong>
+           [안내 및 설정] → <span class="mono">[사용 내역 내보내기]</span> 로 모델별·기능별 금액을 엑셀로 받으실 수 있습니다.</p>
+      </div>
+
+      <div class="note warn">
+        <strong>이 절에서는 <span class="key">Enter</span> 를 치지 마시고 <u>버튼을 마우스로 누르세요.</u></strong>
+        <p class="small" style="margin:6px 0 0">창마다 <span class="key">Enter</span> 가 누르는 버튼이 달라서,
+           습관적으로 <span class="key">Enter</span> 를 치면 <strong>저장이 안 되거나</strong>
+           <strong>창이 안 닫히고 처음으로 되돌아갑니다.</strong> 아래 각 단계에 그 자리를 표시해 두었습니다.</p>
+      </div>
+
+      <ol class="steps">
+        <li>엑셀 <strong>[데이터] 탭</strong> → <strong><span class="mono">DRM AI</span> 메뉴</strong> →
+            <strong>[안내 및 설정] → <span class="mono">[API 키 입력(사용자)]</span></strong> 을 누릅니다.</li>
+        <li><strong>OpenAI / Gemini / Grok</strong> 중 넣을 것을 고릅니다.
+            <p class="small">Grok 은 키를 넣어 둘 수는 있지만 <strong>이 판에는 Grok 실행 기능이 없습니다.</strong>
+               넣지 않으셔도 됩니다.</p></li>
+        <li><strong>Gemini 를 고른 경우에만</strong> — 연결 방식을 한 번 더 묻습니다.
+            <strong>대부분 <span class="key">1</span>(Gemini API · 선불)</strong> 입니다.
+            창에는 <strong>지금 설정된 값</strong>이 들어 있으므로(처음이면 <span class="mono">1</span>),
+            <strong>바꾸려는 것이 아니면 그대로 두고 [확인]</strong> 하세요.
+            <p class="small"><strong>선불</strong>은 Google 에 미리 충전해 두고 쓰는 보통의 방식(AI Studio),
+               <strong>후불</strong>은 Google Cloud 계정으로 다음 달에 청구받는 방식입니다.
+               <span class="key">2</span>(Agent Platform <span class="small">— 예전 이름 Vertex AI, 같은 서비스</span> · 후불)는
+               <strong>학교가 Google Cloud 후불 계정</strong>을 쓸 때만 고릅니다.
+               <strong>1과 2는 서로 다른 키</strong>입니다. 선불 키는 <span class="mono">AIza</span> 또는 <span class="mono">AQ.</span> 로,
+               후불 키는 <span class="mono">AQ.</span> 로 시작하므로 <strong>둘 다 <span class="mono">AQ.</span> 인 경우에는 눈으로 구별되지 않습니다.</strong>
+               맞바꿔 넣으면 <strong>Gemini 기능이 통째로 막힐 수 있으니</strong>
+               <strong>그 키를 어느 화면에서 받았는지</strong> 확인하고 고르세요.</p></li>
+        <li>발급 화면의 <strong>키를 통째로 붙여 넣고 [확인]</strong> 을 누릅니다.
+            <p class="small"><strong>입력 중에는 키가 그대로 보입니다.</strong> 잘못 붙여 넣지 않았는지 눈으로 확인하시라는 것입니다.
+               <strong>저장한 뒤에는 어느 화면에서도 키 전체가 보이지 않습니다.</strong></p>
+            <p class="small"><strong>앞뒤 공백이 딸려 오면 거부됩니다</strong> — 키만 정확히 복사하세요
+               (20~200자, 공백·따옴표·<span class="mono">? &amp; # /</span> 를 넣을 수 없습니다).</p>
+            <p class="small">이미 넣어 둔 키가 있으면 창에 <strong>그 키의 뒤 8자리</strong>가 보입니다
+               (예: <span class="mono">...aB3xY9Zq (53자)</span>). 바꿀 필요가 없으면 <strong>[취소]</strong> 하세요 —
+               <strong>[취소]는 아무것도 바꾸지 않습니다</strong>("바꾸지 않았습니다" 안내가 한 번 뜹니다).</p>
+            <p class="small"><strong>Gemini 에서만</strong>: 칸을 <strong>비운 채 [확인]</strong> 하면
+               <strong>키는 그대로 두고 연결 방식(선불↔후불)만</strong> 바뀝니다.
+               키를 다시 치지 않고 방식만 바꿀 때 쓰는 길이므로, <strong>방식을 바꿀 생각이 없다면 [취소]</strong> 하세요.</p></li>
+        <li>키 앞부분이 그 서비스의 것과 달라 보이면
+            <strong>"…키로 보이지 않습니다 / 그래도 이대로 저장할까요?"</strong> 를 물어봅니다.
+            <p class="small"><strong>[예] 를 눌러야 저장됩니다.</strong> 그냥 <span class="key">Enter</span> 를 치면 [아니오] 가 눌려
+               <strong>아무 말 없이 저장되지 않은 채 끝납니다.</strong>
+               대개는 <strong>다른 서비스의 키를 붙여 넣은 것</strong>이니, 저장을 밀어붙이기 전에 키부터 다시 확인하세요.</p></li>
+        <li><strong>Gemini 에서만</strong> — 방금 넣은 키가 <strong>반대쪽 칸(선불↔후불)에 저장된 키와 같으면</strong>
+            <strong>"같은 값입니다 / 그래도 이대로 저장할까요?"</strong> 를 물어봅니다.
+            <p class="small">이 창도 <strong>기본이 [아니오]</strong> 라서 <span class="key">Enter</span> 를 치면
+               <strong>저장되지 않고 "바꾸지 않았습니다" 로 끝납니다.</strong>
+               같은 키를 두 칸에 넣으면 대개 한쪽이 막히므로, <strong>[아니오] 가 맞는 선택인 경우가 많습니다.</strong></p>
+            <p class="small">연결 방식 <span class="key">2</span>(후불)를 고르셨다면 그 앞에
+               <strong>"GCP 프로젝트 ID (선택)"</strong> 창이 한 번 더 뜹니다.
+               모르시면 <strong>비우고 [확인]</strong> 하셔도 되고, <strong>취소해도 방금 넣은 키는 저장</strong>됩니다.</p></li>
+        <li>저장되면 <strong>"…키를 저장했습니다"</strong> 창이 뜨고, 이어서
+            <strong>"지금 이 키가 실제로 받아들여지는지 확인할까요?"</strong> 를 묻습니다.
+            <strong>[예]</strong>(그냥 <span class="key">Enter</span>)를 누르세요.
+            <p class="small"><strong>요금이 들지 않는 확인</strong>입니다(모델 목록을 한 번 조회할 뿐입니다). 최대 20초쯤 걸립니다.
+               <strong>"키가 정상입니다"</strong> 가 아니면 <a href="#sec6">6장</a> 의
+               <strong>"확인 결과가 «키가 정상입니다» 가 아니다"</strong> 행을 보세요.</p>
+            <p class="small">Gemini 를 <strong>연결 방식 2(Agent Platform)</strong> 로 넣으면 <strong>이 확인 창이 뜨지 않습니다</strong> —
+               그 방식은 확인하는 길이 없습니다. 그래서 <strong>선불·후불 키를 맞바꿔 넣어도 그 자리에서는 드러나지 않습니다.</strong></p></li>
+        <li>마지막으로 <strong>"다른 API 키도 이어서 넣으시겠습니까?"</strong> 를 묻습니다.
+            <strong>더 넣을 것이 없으면 반드시 [아니오]</strong> 를 누르세요.
+            <p class="small">이 창은 <strong>기본이 [예]</strong> 라서 그냥 <span class="key">Enter</span> 를 치면
+               <strong>창이 닫히지 않고 처음(API 고르기)으로 되돌아갑니다.</strong> 고장이 아닙니다.</p></li>
+      </ol>
+
+      <table>
+        <tr><th style="width:34%">확인하고 싶을 때</th><th>어디서 · 무엇이 보이나</th></tr>
+        <tr><td><strong>인증이 되어 있나?</strong></td>
+            <td>[안내 및 설정] → <span class="mono">[인증 상태 확인(올인원 연동)]</span> —
+                <strong>상태</strong>와 <strong>막힌 이유</strong>가 한 줄로 나옵니다.</td></tr>
+        <tr><td><strong>내 파일에 어떤 키가 들어 있나?</strong></td>
+            <td>같은 창에 <strong>OpenAI · Gemini(선불) · Grok</strong> 키가
+                <strong>앞뒤 일부와 길이만</strong> 가려진 채 나옵니다
+                <span class="small">(4-5 로 잠근 뒤에는 <strong>앞 4자와 길이만</strong>)</span>.
+                <strong>Agent Platform(후불) 줄은 그 키를 넣어 두었거나 후불로 쓰는 중일 때만</strong> 나옵니다 —
+                안 보이는 것이 정상입니다.
+                지금 쓰는 쪽 <strong>Gemini 줄</strong>에 <span class="mono">[사용중]</span> 이 붙습니다.
+                <span class="small">키 전체는 어디에도 표시되지 않습니다.</span></td></tr>
+        <tr><td><strong><span class="mono">[경고] 선불·후불 칸에 같은 키가 들어 있습니다</span></strong> 가 보인다</td>
+            <td><strong>Gemini 가 막히는 대표 원인</strong>입니다. 선불·후불은 서로 다른 서비스의 키라
+                같은 값을 두 칸에 넣으면 <strong>대개 한쪽이 거부됩니다.</strong>
+                위 <strong>3단계</strong>로 돌아가 <strong>실제로 쓰는 쪽</strong>만 남기세요.
+                <span class="small">학교가 받은 "조직 인증 키" 하나로 둘 다 쓰는 경우는 예외입니다 —
+                학교 공용 키라면 학교 관리자에게 문의하세요.</span></td></tr>
+        <tr><td><strong>키가 맞는지 다시 확인</strong></td>
+            <td><span class="mono">[API 키 입력(사용자)]</span> 에서 같은 API 를 고르고 키를
+                <strong>다시 붙여 넣어 저장</strong>하면 끝에 확인 창이 다시 뜹니다.</td></tr>
+        <tr><td><strong>모델·Temperature 를 바꾸고 싶다</strong></td>
+            <td>[안내 및 설정] → <span class="mono">[Model/Temperature 설정(사용자)]</span>
+                <span class="small">(이 창은 <strong>키를 건드리지 않습니다.</strong> 그대로 두셔도 됩니다)</span></td></tr>
+      </table>
+
+      <div class="note danger">
+        <strong>본인 키는 본인 계정으로 청구됩니다 — 파일을 남에게 주지 마세요.</strong>
+        <p style="margin:8px 0 0">키를 넣은 <strong>추가 기능 파일을 남에게 주면 키를 준 것과 같습니다.</strong>
+           받은 사람이 쓴 요금도 <strong>발급받으신 분께 청구</strong>됩니다.</p>
+        <p class="small" style="margin:6px 0 0">키가 새어 나갔다고 판단되면 <strong>발급 화면에서 그 키를 폐기(revoke)하고
+           새 키를 발급</strong>받은 뒤 위 절차로 다시 넣으세요.
+           <strong>학교 예산으로 산 키 하나를 여러 선생님이 나눠 쓰는 경우</strong>에만
+           <a href="#secC5">4-5</a> 의 잠금이 필요합니다 — 그 외에는 <a href="#sec5">5장</a> 으로 가세요.</p>
+      </div>
+
+      <h3 id="secC5">4-5. 기관(학교) 키 잠금 — <strong>학교 관리자만</strong></h3>
+      <p><strong>학교 예산으로 키 하나를 결제해 여러 선생님이 나눠 쓰는 경우에만</strong> 필요합니다.
+         선생님이 각자 본인 키를 쓰신다면 <strong>이 절은 건너뛰세요.</strong></p>
+
+      <div class="note danger">
+        <strong>잠그지 않은 파일은 — 그 파일을 가진 사람이 키를 가진 것과 같습니다.</strong>
+        <p style="margin:8px 0 0">AI 기능이 돌려면 프로그램이 키를 읽을 수 있어야 하기 때문입니다.
+           <strong>잠금은 파일 쪽에서 그 위험을 줄이는 기능</strong>입니다.</p>
+      </div>
+
+      <ol class="steps">
+        <li>먼저 <a href="#secC4b">4-4-2</a> 로 <strong>학교 키를 넣고</strong> 되는지 확인합니다.
+            <span class="small">(관리자도 <a href="#secC4a">4-4-1</a> 인증이 먼저 되어 있어야 이 메뉴가 열립니다)</span></li>
+        <li>[안내 및 설정] → <span class="mono">[기관 키 잠금(관리자)]</span> → <strong>1. 잠그기</strong>
+            <p class="small"><strong>이미 잠겨 있으면</strong> "먼저 <strong>2. 잠금 풀기</strong> 를 하세요" 라고 거절합니다.
+               <strong>저장된 키가 하나도 없어도</strong> 잠그지 않습니다 — 먼저 위 1단계를 하세요.</p></li>
+        <li><strong>잠금 방식</strong>을 고릅니다.
+          <table style="margin-top:8px">
+            <tr><th style="width:30%">고르는 값</th><th>뜻</th></tr>
+            <tr><td><strong>1. 여러 PC 배포</strong> <span class="small">(권장)</span></td>
+                <td>잠근 파일을 그대로 복사해 선생님들께 나눠 줄 수 있습니다.</td></tr>
+            <tr><td><strong>2. 이 PC 에서만</strong></td>
+                <td>파일이 밖으로 나갔을 때 <strong>한 겹 더 막아 줍니다.</strong>
+                    <strong>다만 완전한 차단은 아닙니다</strong> — 파일을 학교 밖으로 내보내지 않는 것이 여전히 가장 중요합니다.
+                    그리고 이 방식은 <strong>관리자 본인에게도 걸립니다</strong>:
+                    다른 PC 로 옮기거나, <strong>컴퓨터 이름을 바꾸거나, C: 를 다시 포맷하면</strong>
+                    키가 열리지 않습니다.</td></tr>
+          </table></li>
+        <li><strong>비밀번호</strong>를 정합니다. <strong>10자 이상 64자 이하</strong>, 한글도 됩니다. 두 번 넣습니다.
+            <p class="small">넣은 비밀번호를 <strong>확인할 때 3초쯤 멈추는데 정상</strong>입니다
+               (함부로 맞히지 못하게 일부러 무겁게 계산합니다).</p></li>
+        <li>기관(학교) 이름을 넣습니다. <span class="small">(선택 — 상태 화면에만 쓰입니다)</span></li>
+      </ol>
+
+      <table>
+        <tr><th style="width:44%">잠근 뒤 선생님이</th><th>되나요?</th></tr>
+        <tr><td>AI 기능 사용</td><td><strong>그대로 됩니다</strong></td></tr>
+        <tr><td>모델 · Temperature 변경</td><td><strong>그대로 됩니다</strong></td></tr>
+        <tr><td>화면에서 키를 보기</td><td>앞 4자와 길이만 보입니다</td></tr>
+        <tr><td>설정 창에서 키를 바꾸거나 지우기</td><td><strong>관리자 비밀번호가 있어야 합니다</strong></td></tr>
+        <tr><td>파일만 손에 넣어 키를 꺼내기</td>
+            <td>잠금 중에는 <strong>파일에 키가 남지 않습니다</strong>
+                <span class="small">(다만 전문 도구를 가진 사람까지 막지는 못합니다 — 아래 마지막 줄을 보세요)</span></td></tr>
+        <tr><td><strong>추가 기능 파일을 다른 사람에게 넘기거나 공개했을 때</strong></td>
+            <td><strong>잠금으로 막을 수 없습니다</strong></td></tr>
+      </table>
+
+      <table>
+        <tr><th style="width:34%">잠근 뒤 관리자가 하려는 일</th><th>어디서</th></tr>
+        <tr><td>지금 잠겨 있는지 보기</td>
+            <td><span class="mono">[기관 키 잠금(관리자)]</span> → <strong>4. 상태 보기</strong>
+                <span class="small">(키 대신 <strong>지문</strong>만 보입니다 — 키가 바뀌었는지 확인하는 용도)</span></td></tr>
+        <tr><td>키를 바꾸기</td>
+            <td><a href="#secC4b">4-4-2</a> 와 같습니다. 비밀번호를 한 번 물어봅니다.
+                <span class="small"><strong>비밀번호를 넣은 뒤 5분 안에</strong> 바꾸기를 끝내세요.
+                시간이 지나면 "방금 바꾼 키가 봉투에 담기지 않았다"는 안내가 뜨고,
+                <strong>다음에 열 때 이전 키로 돌아갑니다.</strong></span></td></tr>
+        <tr><td>비밀번호 바꾸기</td>
+            <td><span class="mono">[기관 키 잠금(관리자)]</span> → <strong>3. 비밀번호 바꾸기</strong>
+                <span class="small"><strong>이미 파일을 복사해 간 사람은 옛 비밀번호로 그 사본을 계속 엽니다.</strong>
+                유출에 대응하시는 것이라면 비밀번호만 바꾸지 마시고,
+                <strong>키를 폐기·재발급</strong>하거나 <strong>2. 잠금 풀기</strong> 뒤 <strong>다시 잠그</strong>세요.</span></td></tr>
+        <tr><td><strong>"잠금 정보가 이 애드인에서 만든 그대로가 아닙니다"</strong> 라고 나온다</td>
+            <td><strong>비밀번호를 잊으신 것이 아닙니다.</strong> 파일의 잠금 정보가 손상·변조된 것이라
+                비밀번호를 아예 묻지 않습니다.
+                <strong>백업본으로 되돌리거나 배포자에게 문의</strong>하세요 —
+                <span class="small">이때 <strong>5. 비밀번호 분실</strong> 을 쓰면 저장된 키가 모두 지워집니다.</span></td></tr>
+        <tr><td>잠금을 풀기</td>
+            <td><span class="mono">[기관 키 잠금(관리자)]</span> → <strong>2. 잠금 풀기</strong>
+                <span class="small">(키가 다시 평문으로 저장됩니다)</span></td></tr>
+      </table>
+
+      <p class="small">잠근 뒤에는 <span class="mono">%AppData%\Microsoft\AddIns\DRM_AI_...xlam</span> 파일을
+         그대로 복사해 나눠 주시면 됩니다. <strong>받으신 선생님도 올인원 인증은 각자</strong> 하셔야 AI 기능이 열립니다.</p>
+
+      <div class="note warn">
+        <strong>비밀번호를 잊으면 되살릴 수 없습니다.</strong>
+        <p style="margin:8px 0 0">[기관 키 잠금(관리자)] → <strong>5. 비밀번호 분실</strong> 을 쓰면
+           <strong>저장된 키를 모두 지우고</strong> 잠금을 풉니다. 확인을 위해 <span class="mono">키삭제</span> 를
+           직접 입력해야 진행됩니다. 그 뒤 <a href="#secC4b">4-4-2</a> 로 키를 다시 넣으셔야 합니다.</p>
+      </div>
+
+      <div class="note warn">
+        <strong>잠금보다 중요한 것은 파일을 누가 가지고 있느냐입니다.</strong>
+        <p style="margin:8px 0 0">잠금은 파일 안에 키 글자가 남지 않게 합니다. 그러나 프로그램이 키를 써야 하는 이상,
+           <strong>파일을 손에 넣은 사람은 결국 그 키를 쓸 수 있습니다.</strong> 아래 세 가지를 지켜 주세요.</p>
+        <ol class="steps" style="margin-top:8px">
+          <li><strong>추가 기능 파일을 인터넷·메신저·공유 폴더에 올리지 마세요.</strong>
+              한 번 학교 밖으로 나가면 되돌릴 수 없습니다.</li>
+          <li><strong>필요한 선생님에게만</strong> 나눠 주고, <strong>누구에게 주었는지 적어</strong> 두세요.</li>
+          <li>전출·퇴직하신 분의 PC 와 공용 PC 에서는 <strong>추가 기능 파일을 지워</strong> 주세요.</li>
+        </ol>
+        <p class="small" style="margin:8px 0 0">키가 새어 나갔다고 판단되면 <strong>발급처에서 그 키를 폐기하고
+           새 키를 발급</strong>받은 뒤 <a href="#secC4b">4-4-2</a> 로 다시 넣으세요.
+           요금은 <strong>키를 쓴 사람이 아니라 키를 발급받은 학교로</strong> 청구됩니다.</p>
+      </div>
     </div>
 
     <!-- ===================== 5. 체크리스트 ===================== -->
@@ -662,17 +978,38 @@
         <li>(처음 설치) <a href="#secC1">4-1</a> 에서 <strong>[찾아보기]로 <span class="mono">.xlam</span> 을
             직접 선택해 등록</strong>했다.
             <span class="small">(업데이트는 해당 없음)</span></li>
-        <li><strong>DRM AI 메뉴에서 Gemini 를 쓰는 기능을 아무거나 하나 실행</strong>해 오류 없이 동작한다.
-            <span class="small">(설치 프로그램 완료 화면에서도 같은 확인을 안내합니다. 인증 오류가 나면
-            <a href="#sec6">6장</a> 의 "Gemini 실행 오류" 행을 보세요)</span></li>
         <li><span class="mono">C:\MyTrustedFiles</span> 폴더에 <span class="mono">.py</span> 파일들이 들어 있다.</li>
         <li>(업데이트) 백업해 둔 개인 프롬프트·템플릿을 DRM AI 메뉴에서 <strong>기능별로 직접 복원</strong>했다.</li>
         <li>(처음 설치) <a href="#secC2">4-2</a> 빠른 실행 도구 모음에 <span class="mono">[DRM AI 실행]</span> 을 등록했다.</li>
         <li>(처음 설치) <a href="#secC3">4-3</a> 40번 <strong>[설명서 보기]</strong> 를 열어 남은 항목이 없는지 확인했다.</li>
+        <li><strong>① 올인원 교사 도우미에서 메일 인증</strong>을 마치고 <strong>올인원을 한 번 실행</strong>했다
+            (<a href="#secC4a">4-4-1</a>).
+            <span class="small">([안내 및 설정] → [인증 상태 확인(올인원 연동)] 이 <strong>"상태: 인증 확인됨"</strong> 이면 된 것입니다)</span></li>
+        <li><strong>② <a href="#secC4b">4-4-2</a> 에서 API 키를 넣고</strong> 저장 뒤
+            <strong>"키가 정상입니다"</strong> 확인까지 마쳤다.
+            <span class="small">(Gemini 를 연결 방식 2(후불)로 넣으셨다면 이 확인 창은 뜨지 않습니다)</span></li>
+        <li>(학교 공용 키를 쓰는 경우) <a href="#secC5">4-5</a> 에서 <strong>기관 키 잠금</strong>을 걸었다.
+            <span class="small">(학교 관리자만 해당)</span></li>
+        <li>(업데이트) <strong>[안내 및 설정] → <span class="mono">[인증 상태 확인(올인원 연동)]</span> 에서
+            키가 그대로 있는지</strong> 확인했다.
+            <span class="small">업데이트는 추가 기능 파일을 새 파일로 바꾸므로,
+            <strong>비어 있으면 <a href="#secC4b">4-4-2</a> 로 다시 넣으셔야</strong> 합니다.</span></li>
+        <li><strong>마지막으로</strong> AI 기능을 하나 실행해 오류 없이 동작한다.
+            <span class="small">(예: 셀 하나를 고르고 <strong>DRM AI → [Gemini 실행] →
+            <span class="mono">[Gemini로 범위를 단일 셀에 처리]</span></strong>.
+            OpenAI 키만 넣으셨다면 <strong>[GPT 실행] → <span class="mono">[GPT로 범위를 단일 셀에 처리]</span></strong> 로 확인하세요.
+            위 인증·키 입력을 마친 뒤에 하시고, 오류가 나면 <a href="#sec6">6장</a> 의 "Gemini 실행 오류" 행)</span></li>
       </ul>
-      <div class="note danger">
-        <strong>주의:</strong> API 설정값, 모델 설정, 관리자용 메뉴는 <strong>절대 임의로 수정하지 마세요.</strong>
-        이미 설정된 상태로 배포되며, 바꾸면 동작이 멈출 수 있습니다.
+      <div class="note warn">
+        <strong>주의:</strong> <span class="mono">[안내 및 설정]</span> 의
+        <strong>[Gemini 연결 방식(기관 관리자)]</strong> 과 <strong>[기관 키 잠금(관리자)]</strong> 은
+        <strong>학교 관리자용</strong>입니다. 필요 없으면 열지 마세요.
+        <span class="small">(<a href="#secC4b">4-4-2</a> 안에서 물어보는 <strong>"Gemini 연결 방식 1/2"</strong> 와는
+        <strong>다른 메뉴</strong>입니다. 선생님이 고르실 것은 그 안의 1/2 뿐이고, 이 메뉴는 관리자 암호가 필요합니다)</span>
+        <p class="small" style="margin:6px 0 0"><strong>[API 키 입력(사용자)]</strong> 과
+           <strong>[Model/Temperature 설정(사용자)]</strong> 은 <strong>선생님이 직접 쓰시는 메뉴</strong>입니다
+           (<a href="#secC4b">4-4-2</a>). 예전 판에서는 "API 설정값을 임의로 수정하지 말라" 고 안내했지만,
+           지금은 <strong>쓰시는 분이 본인 키를 직접 넣는 방식</strong>으로 바뀌었습니다.</p>
       </div>
     </div>
 
@@ -709,8 +1046,59 @@
               다른 폴더에 있으면 동작하지 않습니다.</td>
         </tr>
         <tr>
+          <td>AI 기능이나 <span class="mono">[API 키 입력(사용자)]</span> 을 누르면
+              <strong>"올인원 교사 도우미의 인증이 필요합니다"</strong> 창</td>
+          <td>올인원에서 <strong>메일 인증</strong>을 마치고 <strong>올인원을 한 번 실행</strong>하세요
+              (<a href="#secC4a">4-4-1</a>). <strong>인증키는 메일로 신청해 받는 것이라 회신에 1~2일</strong> 걸립니다.
+              창에 나오는 <strong>"현재 상태"</strong> 한 줄이 이유를 알려 줍니다 —
+              <span class="mono">인증 기록 없음</span>(신청 전이거나 올인원을 아직 실행하지 않음 — 또는 <strong>다른 Windows 계정</strong>에서 인증함),
+              <span class="mono">체험판 (정식 인증 아님)</span>,
+              <span class="mono">이 PC 의 기록이 아님</span>(다른 PC 에서 인증했거나 컴퓨터 이름을 바꿈 — 이 PC 에서 올인원을 한 번 실행),
+              <span class="mono">연동 기록 만료</span>(올인원을 한 번 실행하면 새로 발급).
+              <strong><span class="mono">검증할 수 없음</span> · <span class="mono">인증 기록 형식 오류</span> 가 나오면
+              올인원을 한 번 더 실행해 보고, 그래도 같으면</strong> 이 창을 갈무리해 배포자에게 문의하세요
+              (보안 프로그램이 구성 요소를 막는 PC 에서 주로 납니다).
+              <strong>일반 기능은 인증 없이 그대로</strong> 됩니다.</td>
+        </tr>
+        <tr>
+          <td>키를 저장한 뒤 <strong>확인 결과가 "키가 정상입니다" 가 아니다</strong></td>
+          <td>화면에 나온 <strong>번호</strong>로 갈립니다.
+            <table style="margin-top:6px">
+              <tr><th style="width:22%">화면의 번호</th><th>뜻과 대처</th></tr>
+              <tr><td><strong>400 · 401</strong></td>
+                  <td><strong>키가 틀렸습니다.</strong> 앞뒤에 공백이 붙었거나, 붙여 넣기가 잘렸거나,
+                      <strong>다른 서비스의 키</strong>일 수 있습니다.
+                      <a href="#secC4b">4-4-2</a> 로 다시 넣으세요 —
+                      입력 중에 키가 보이므로 잘렸는지 바로 알 수 있습니다.</td></tr>
+              <tr><td><strong>403</strong></td>
+                  <td><strong>화면이 이유를 함께 알려 주면 그대로 따르세요.</strong> 흔한 원인은
+                      <strong>① Gemini 선불·후불 키를 맞바꿔 넣음</strong>(둘 다 <span class="mono">AQ.</span> 로 시작하면 눈으로 구별되지 않습니다),
+                      <strong>② 그 프로젝트에서 해당 API 가 꺼져 있음</strong>,
+                      <strong>③ 웹사이트·IP 제한이 걸린 키</strong>(이 프로그램에서는 쓸 수 없습니다),
+                      <strong>④ 결제 미설정</strong>, <strong>⑤ 키 자체가 거부됨</strong>입니다.
+                      <strong>"원인을 좁히지 못했습니다" 라고 나오면</strong> 목록을 볼 권한만 없는 경우일 수 있으니,
+                      <strong>실제 기능을 한 번 돌려 보고</strong> 판단하세요.</td></tr>
+              <tr><td><strong>그 밖의 번호</strong><br /><span class="small">(404 · 500 등)</span></td>
+                  <td>"<strong>키가 틀렸다는 뜻은 아닙니다</strong>" 라는 안내가 함께 나옵니다.
+                      잠시 뒤 다시 확인해 보시고, 계속 같으면 실제 기능을 한 번 돌려 보세요.</td></tr>
+              <tr><td><strong>429</strong></td>
+                  <td>요청이 몰린 것뿐이며 <strong>키는 맞을 수 있습니다.</strong> 잠시 뒤 다시 확인하세요.</td></tr>
+              <tr><td><strong>연결 오류</strong></td>
+                  <td>인터넷·방화벽 문제입니다. <strong>키가 틀렸다는 뜻이 아닙니다.</strong></td></tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
           <td>Gemini 실행 오류</td>
-          <td>API 설정을 임의로 바꿨는지 확인하고, 바꿨다면 학교 관리자에게 기본값 복구를 요청하세요.</td>
+          <td><strong>대부분 인증이나 키 문제입니다.</strong>
+              ① [안내 및 설정] → <span class="mono">[인증 상태 확인(올인원 연동)]</span> 을 열어
+              <strong>인증 상태와 저장된 키 목록을 한 화면에서</strong> 확인하세요.
+              ② 거기에 <span class="mono">[경고] 선불·후불 칸에 같은 키가 들어 있습니다</span> 줄이 보이면
+              <strong>그것이 원인</strong>입니다 (<a href="#secC4b">4-4-2</a> 3단계로 정리).
+              ③ 키를 아직 넣지 않았다면 <a href="#secC4b">4-4-2</a> 로 넣고,
+              ④ Gemini <strong>연결 방식(1 선불 / 2 후불)</strong>이 실제로 결제되는 방식과 같은지 확인하세요.
+              <span class="small">이 창을 <strong>화면 갈무리해 문의</strong>하시면 빠릅니다 — 키는 가려져 나오므로 안전합니다.
+              학교 공용 키를 쓰신다면 학교 관리자에게 문의하세요.</span></td>
         </tr>
       </table>
 
