@@ -199,6 +199,16 @@
           <td><strong>올인원 도우미</strong> 설치 파일</td>
           <td>배포 폴더나 공유 링크에 있는 <strong>가장 최신 setup 파일</strong>을 쓰면 됩니다.</td>
         </tr>
+        <tr>
+          <td><strong>배포자</strong></td>
+          <td>설치 파일을 만들어 학교에 주는 쪽(판매자)</td>
+          <td><a href="#secC5b">4-5-1</a> 의 A 길 설치 파일과 그 비밀번호는 여기서 옵니다.</td>
+        </tr>
+        <tr>
+          <td><strong>학교 관리자</strong></td>
+          <td>학교 안에서 학교 키와 기관 키 파일을 맡은 선생님</td>
+          <td>키 교체·기관 키 파일 만들기는 배포자 없이 <strong>학교 관리자가</strong> 합니다.</td>
+        </tr>
       </table>
       <p class="small"><strong>버전 숫자가 설명서와 달라도 정상입니다.</strong>
          숫자를 맞추려 하지 말고, <strong>내가 받은 파일</strong>을 그대로 사용하세요.
@@ -220,7 +230,8 @@
             (신청 방법은 <a href="#secC4a">4-4-1</a>).
             <span class="small">받으신 파일에는 키가 <strong>이미 들어 있을 수도, 비어 있을 수도</strong> 있습니다.
             엑셀에서 <strong>[안내 및 설정] → [인증 상태 확인(올인원 연동)]</strong> 을 열면 어느 쪽인지 바로 보입니다 —
-            비어 있으면 본인 키를 넣으시고, 들어 있으면 넣지 않으셔도 됩니다.
+            비어 있으면 본인 키를 넣으시고(학교에서 <strong>기관 키 파일</strong>을 주었다면 본인 키 대신 그 파일을 넣습니다 —
+            <a href="#secC5b">4-5-1</a>), 들어 있으면 넣지 않으셔도 됩니다.
             <strong>어느 쪽이든 인증은 각자 하셔야</strong> 합니다.
             하이라이트·PDF 같은 일반 기능은 인증 없이 그대로 쓰실 수 있습니다.</span></li>
       </ol>
@@ -250,7 +261,11 @@
                 <li><a href="#secC4b">4-4-2. 본인 API 키 넣기</a></li>
               </ol>
             </li>
-            <li><a href="#secC5">4-5. 기관(학교) 키 잠금 (학교 관리자만)</a></li>
+            <li><a href="#secC5">4-5. 기관(학교) 키 잠금 (잠그기는 학교 관리자)</a>
+              <ol>
+                <li><a href="#secC5b">4-5-1. 잠근 키를 선생님들께 나눠 주기 — 두 길 (선생님도 보세요)</a></li>
+              </ol>
+            </li>
           </ol>
         </li>
         <li><a href="#sec5">5. 완료 확인 체크리스트</a></li>
@@ -299,7 +314,7 @@
           <th>폴더 안에 그 파일이 <strong>없다</strong></th>
           <td>먼저 <a href="#sec2">2-1)</a> 대로 <strong>압축을 제대로 풀었는지</strong> 확인하세요.
               (ZIP 파일 안에서 바로 실행하면 파일이 안 보일 수 있습니다)
-              그래도 없다면 <strong>학교 관리자(배포자)에게 "설치 프로그램이 포함된 배포본"을 요청</strong>하세요.
+              그래도 없다면 <strong>학교 관리자(없으면 배포자)에게 "설치 프로그램이 포함된 배포본"을 요청</strong>하세요.
               <strong>파일을 임의로 옮기거나 직접 설치하지 마세요.</strong></td>
         </tr>
       </table>
@@ -411,6 +426,7 @@
           <li>설치·업데이트 프로그램이 <strong>대신 백업해 주지 않습니다.</strong></li>
           <li>올인원 도우미를 비롯한 <strong>다른 프로그램으로도 할 수 없습니다.</strong></li>
           <li>백업한 파일은 <strong>바탕화면 등 안전한 위치</strong>에 따로 보관하세요.</li>
+          <li>개인 프롬프트·템플릿은 <strong>추가 기능 파일 안에</strong> 들어 있어, 파일이 새 것으로 바뀌면 함께 사라지기 때문입니다.</li>
         </ul>
         <p style="margin-bottom:0">백업을 마쳤으면 <strong>엑셀을 완전히 종료</strong>한 뒤 설치를 진행합니다.
            업데이트가 끝난 뒤에는 같은 방식으로 <strong>DRM AI 메뉴에서 각 기능별로 직접 복원</strong>합니다.</p>
@@ -554,7 +570,8 @@
           <tr><td>5. (권장) 부록3 빠른 실행 등록</td><td><a href="#secC2">4-2</a> 와 같은 작업입니다.</td></tr>
           <tr><td>6. API 값을 임의로 바꾸지 말 것</td>
               <td><strong>지금은 달라졌습니다.</strong> 쓰시는 분이 <a href="#secC4b">4-4-2</a> 에서
-                  <strong>본인 API 키를 직접 넣으셔야</strong> 합니다.
+                  <strong>본인 API 키를 직접 넣으셔야</strong> 합니다
+                  (학교 키를 받는 분은 넣지 않습니다 — <a href="#secC4">4-4</a> 표).
                   <span class="small">완료 화면 문구가 아직 옛 안내입니다.</span></td></tr>
         </table>
       </div>
@@ -696,11 +713,15 @@
           <tr><th>② 본인 <strong>API 키 입력</strong></th>
               <td>OpenAI·Gemini 키를 <strong>선생님이 직접</strong> 넣습니다. 몇 분이면 끝납니다
                   → <a href="#secC4b">4-4-2</a></td></tr>
+          <tr><th>학교 키를 <strong>받는</strong> 분</th>
+              <td>②를 하지 않습니다. <strong>잠긴 설치 파일</strong>이면 할 일이 없고,
+                  <strong>기관 키 파일(<span class="mono">.drmkey</span>)</strong>을 받았으면 7 번으로 가져옵니다
+                  → <a href="#secC5b">4-5-1</a></td></tr>
         </table>
         <p style="margin:8px 0 0"><strong>①이 먼저입니다.</strong> 인증이 없으면 <strong>키를 넣는 창조차 열리지 않습니다.</strong>
            회신을 기다려야 하므로 <strong>설치와 상관없이 가장 먼저 신청해 두시는 편이 좋습니다.</strong></p>
         <p class="small" style="margin:6px 0 0">하이라이트·PDF·파일 이름 바꾸기 같은 <strong>일반 기능은 인증 없이</strong> 그대로 쓰실 수 있습니다.
-           <strong>판매자·학교 관리자가 키를 넣어 준 파일</strong>을 받으셨더라도 <strong>인증은 각자</strong> 하셔야 합니다.</p>
+           <strong>학교 키를 받는 분도 ① 인증은 각자</strong> 하셔야 합니다.</p>
       </div>
 
       <h4 id="secC4a">4-4-1. 올인원 교사 도우미에서 메일 인증 받기 <span class="small">(①)</span></h4>
@@ -737,6 +758,16 @@
       </div>
 
       <h4 id="secC4b">4-4-2. 본인 API 키 넣기 <span class="small">(②)</span></h4>
+      <div class="note">
+        <strong>학교 키로 쓰는 분은 이 절을 건너뜁니다.</strong>
+        <p style="margin:8px 0 0">학교(관리자)가 <strong>이미 잠근 설치 파일</strong>을 주었거나
+           <strong>기관 키 파일(<span class="mono">.drmkey</span>)</strong>을 주었다면 본인 키를 넣지 마세요 —
+           <a href="#secC5b">4-5-1</a> 대로 하면 됩니다.
+           <span class="small">(이미 잠겨 있는지는 [안내 및 설정] → <span class="mono">[기관 키 잠금(관리자)]</span> →
+           <strong>4. 상태 보기</strong> 에 "켜져 있습니다" 로 나오는지로 압니다.
+           잠긴 파일에서 <span class="mono">[API 키 입력(사용자)]</span> 을 누르면 <strong>관리자 비밀번호를 묻는 창</strong>이 뜹니다 —
+           고장이 아니니 [취소] 하고 4-5-1 로 가세요)</span></p>
+      </div>
       <div class="note danger">
         <strong>예전의 "마지막 8자리 입력" 방식은 없어졌습니다.</strong>
         <p style="margin:8px 0 0">이제는 <strong>쓰시는 분이 발급받은 키를 통째로</strong> 넣습니다.
@@ -859,6 +890,10 @@
         <tr><td><strong>모델·Temperature 를 바꾸고 싶다</strong></td>
             <td>[안내 및 설정] → <span class="mono">[Model/Temperature 설정(사용자)]</span>
                 <span class="small">(이 창은 <strong>키를 건드리지 않습니다.</strong> 그대로 두셔도 됩니다)</span></td></tr>
+        <tr><td><strong>고를 수 있는 Gemini 모델</strong></td>
+            <td><span class="mono">gemini-3.7-flash</span>(기본) · <span class="mono">gemini-3.8-flash</span>(최신 — 사양·요금이 3.7 과 같습니다) ·
+                <span class="mono">gemini-3.1-pro-preview</span>(심층 추론). flash 두 모델은 Temperature 대신 <strong>사고 수준</strong>(low / medium / high)을 씁니다.
+                <span class="small">영상 맞춤 TTS 의 영상 분석은 설정과 무관하게 3.7 로 고정됩니다.</span></td></tr>
       </table>
 
       <div class="note danger">
@@ -871,28 +906,24 @@
            <a href="#secC5">4-5</a> 의 잠금이 필요합니다 — 그 외에는 <a href="#sec5">5장</a> 으로 가세요.</p>
       </div>
 
-      <h3 id="secC5">4-5. 기관(학교) 키 잠금 — <strong>학교 관리자만</strong></h3>
-      <p><strong>학교 예산으로 키 하나를 결제해 여러 선생님이 나눠 쓰는 경우에만</strong> 필요합니다.
+      <h3 id="secC5">4-5. 기관(학교) 키 잠금 — <strong>잠그는 것은 학교 관리자, 받는 법은 <a href="#secC5b">4-5-1</a></strong></h3>
+      <p><strong>학교 키를 받는 쪽 선생님은 <a href="#secC5b">4-5-1</a> 만 보시면 됩니다.</strong>
+         잠그는 절차(아래)는 <strong>학교 예산으로 키 하나를 결제해 여러 선생님이 나눠 쓰는 경우</strong> 학교 관리자가 합니다.
          선생님이 각자 본인 키를 쓰신다면 <strong>이 절은 건너뛰세요.</strong></p>
-
-      <div class="note danger">
-        <strong>잠그지 않은 파일은 — 그 파일을 가진 사람이 키를 가진 것과 같습니다.</strong>
-        <p style="margin:8px 0 0">AI 기능이 돌려면 프로그램이 키를 읽을 수 있어야 하기 때문입니다.
-           <strong>잠금은 파일 쪽에서 그 위험을 줄이는 기능</strong>입니다.</p>
-      </div>
 
       <ol class="steps">
         <li>먼저 <a href="#secC4b">4-4-2</a> 로 <strong>학교 키를 넣고</strong> 되는지 확인합니다.
             <span class="small">(관리자도 <a href="#secC4a">4-4-1</a> 인증이 먼저 되어 있어야 이 메뉴가 열립니다)</span></li>
         <li>[안내 및 설정] → <span class="mono">[기관 키 잠금(관리자)]</span> → <strong>1. 잠그기</strong>
-            <p class="small"><strong>이미 잠겨 있으면</strong> "먼저 <strong>2. 잠금 풀기</strong> 를 하세요" 라고 거절합니다.
+            <p class="small"><strong>이미 잠겨 있으면</strong> "이미 잠겨 있습니다. 키를 바꾸려면 먼저 <strong>2. 잠금 풀기</strong> 를 하세요" 라고 거절합니다.
                <strong>저장된 키가 하나도 없어도</strong> 잠그지 않습니다 — 먼저 위 1단계를 하세요.</p></li>
         <li><strong>잠금 방식</strong>을 고릅니다.
           <table style="margin-top:8px">
             <tr><th style="width:30%">고르는 값</th><th>뜻</th></tr>
-            <tr><td><strong>1. 여러 PC 배포</strong> <span class="small">(권장)</span></td>
-                <td>잠근 파일을 그대로 복사해 선생님들께 나눠 줄 수 있습니다.</td></tr>
-            <tr><td><strong>2. 이 PC 에서만</strong></td>
+            <tr><td><strong>1. 이 파일을 학교 PC 여러 대에 나눠 준다</strong> <span class="small">(권장)</span></td>
+                <td>잠근 키를 <strong>기관 키 파일</strong>(<a href="#secC5b">4-5-1</a>)로 선생님들께 나눠 줄 수 있습니다.
+                    이 방식으로 잠근 것만 파일을 만들 수 있습니다.</td></tr>
+            <tr><td><strong>2. 이 PC 에서만 쓴다</strong></td>
                 <td>파일이 밖으로 나갔을 때 <strong>한 겹 더 막아 줍니다.</strong>
                     <strong>다만 완전한 차단은 아닙니다</strong> — 파일을 학교 밖으로 내보내지 않는 것이 여전히 가장 중요합니다.
                     그리고 이 방식은 <strong>관리자 본인에게도 걸립니다</strong>:
@@ -910,10 +941,12 @@
         <tr><td>AI 기능 사용</td><td><strong>그대로 됩니다</strong></td></tr>
         <tr><td>모델 · Temperature 변경</td><td><strong>그대로 됩니다</strong></td></tr>
         <tr><td>화면에서 키를 보기</td><td>앞 4자와 길이만 보입니다</td></tr>
-        <tr><td>설정 창에서 키를 바꾸거나 지우기</td><td><strong>관리자 비밀번호가 있어야 합니다</strong></td></tr>
+        <tr><td>설정 창에서 키를 <strong>바꾸기</strong></td><td><strong>관리자 비밀번호가 있어야 합니다</strong>
+            <span class="small">(지우는 것은 <strong>5. 비밀번호 분실</strong> 로 비밀번호 없이도 됩니다 — 훔치는 길은 아니고,
+            지워지면 기관 키 파일을 다시 받아 7 번으로 넣으면 됩니다. 아래 "비밀번호를 잊으면" 참고)</span></td></tr>
         <tr><td>파일만 손에 넣어 키를 꺼내기</td>
             <td>잠금 중에는 <strong>파일에 키가 남지 않습니다</strong>
-                <span class="small">(다만 전문 도구를 가진 사람까지 막지는 못합니다 — 아래 마지막 줄을 보세요)</span></td></tr>
+                <span class="small">(다만 파일을 뜯어 분석하는 사람까지 막지는 못합니다 — 아래 마지막 줄을 보세요)</span></td></tr>
         <tr><td><strong>추가 기능 파일을 다른 사람에게 넘기거나 공개했을 때</strong></td>
             <td><strong>잠금으로 막을 수 없습니다</strong></td></tr>
       </table>
@@ -924,10 +957,15 @@
             <td><span class="mono">[기관 키 잠금(관리자)]</span> → <strong>4. 상태 보기</strong>
                 <span class="small">(키 대신 <strong>지문</strong>만 보입니다 — 키가 바뀌었는지 확인하는 용도)</span></td></tr>
         <tr><td>키를 바꾸기</td>
-            <td><a href="#secC4b">4-4-2</a> 와 같습니다. 비밀번호를 한 번 물어봅니다.
-                <span class="small"><strong>비밀번호를 넣은 뒤 5분 안에</strong> 바꾸기를 끝내세요.
-                시간이 지나면 "방금 바꾼 키가 봉투에 담기지 않았다"는 안내가 뜨고,
-                <strong>다음에 열 때 이전 키로 돌아갑니다.</strong></span></td></tr>
+            <td><span class="mono">[API 키 입력(사용자)]</span> 로 새 키를 넣습니다(<a href="#secC4b">4-4-2</a> 와 같은 창이고,
+                시작할 때 <strong>관리자 비밀번호</strong>를 한 번 묻습니다).
+                <span class="small"><strong>비밀번호를 넣은 뒤 5분 안에</strong> 저장까지 끝내세요 —
+                늦으면 "바꾼 키를 잠금 상자에 담지 못했습니다" 안내가 뜨고 <strong>다음에 열 때 이전 키로 돌아갑니다.</strong>
+                A 길로 받은 학교는 <strong>3. 비밀번호 바꾸기</strong> 를 먼저 해 두어야 이 비밀번호를 압니다.
+                바꾼 뒤에는 <strong>6 번으로 기관 키 파일을 새로 만들어</strong> 선생님들께 다시 나눠 주세요(선생님은 7 번).</span></td></tr>
+        <tr><td>선생님들께 나눠 줄 파일 만들기</td>
+            <td><span class="mono">[기관 키 잠금(관리자)]</span> → <strong>6. 선생님 배포용 기관 키 파일 만들기</strong>
+                <span class="small">(비밀번호 확인 · 저장 위치를 묻습니다 · <a href="#secC5b">4-5-1</a>)</span></td></tr>
         <tr><td>비밀번호 바꾸기</td>
             <td><span class="mono">[기관 키 잠금(관리자)]</span> → <strong>3. 비밀번호 바꾸기</strong>
                 <span class="small"><strong>이미 파일을 복사해 간 사람은 옛 비밀번호로 그 사본을 계속 엽니다.</strong>
@@ -943,8 +981,81 @@
                 <span class="small">(키가 다시 평문으로 저장됩니다)</span></td></tr>
       </table>
 
-      <p class="small">잠근 뒤에는 <span class="mono">%AppData%\Microsoft\AddIns\DRM_AI_...xlam</span> 파일을
-         그대로 복사해 나눠 주시면 됩니다. <strong>받으신 선생님도 올인원 인증은 각자</strong> 하셔야 AI 기능이 열립니다.</p>
+      <h4 id="secC5b">4-5-1. 잠근 키를 선생님들께 나눠 주기 — 두 길 <span class="small">(선생님도 보세요)</span></h4>
+      <div class="note warn">
+        <strong>추가 기능 파일(<span class="mono">.xlam</span>)을 통째로 복사해 나눠 주지 마세요.</strong>
+        <p style="margin:8px 0 0">그러면 선생님 PC 의 <strong>개인 프롬프트·템플릿이 사라지고</strong>(<a href="#backup">2-4</a> 와 같은 이유),
+           Excel 을 닫고 숨은 폴더를 찾아 덮어써야 합니다. 대신 아래 두 길 중 하나를 씁니다.
+           키가 <strong>어디서 들어갔는가</strong>로 갈리고, <strong>선생님이 할 일이 있는 경우는 B 뿐</strong>입니다.</p>
+      </div>
+      <table>
+        <tr><th style="width:26%">상황</th><th style="width:14%">길</th><th>학교 관리자</th><th style="width:24%">선생님</th></tr>
+        <tr><td>배포자(판매자)가 학교 키를 넣어 <strong>처음부터 잠근 채</strong> 만든 설치 파일을 받았다</td>
+            <td><strong>A. 잠근 설치 파일</strong></td>
+            <td>비밀번호를 배포자에게 따로 받아 <strong>3. 비밀번호 바꾸기</strong>. 그 설치 파일을 선생님들께 그대로 전달
+                <span class="small">(4. 상태 보기 의 방식이 "여러 PC 배포 가능" 이어야 나중에 6 번을 쓸 수 있습니다.
+                바꾼 비밀번호는 <strong>관리자 PC 의 파일에만 적용</strong>됩니다 — 선생님 PC 의 설치본은 배포자가 정한 비밀번호 그대로이니
+                그 비밀번호는 학교 안에서만 관리하세요)</span></td>
+            <td><strong>없음</strong> — 설치하면 이미 잠겨 있습니다
+                <span class="small">(4. 상태 보기 에 "켜져 있습니다")</span></td></tr>
+        <tr><td>키 없이 받았고 학교가 <strong>직접 키를 넣어</strong> 잠근다</td>
+            <td><strong>B. 기관 키 파일</strong></td>
+            <td><a href="#secC4b">4-4-2</a> 로 키 입력 → <strong>1. 잠그기</strong>(방식 1) →
+                <strong>6. 선생님 배포용 기관 키 파일 만들기</strong> → 파일 전달</td>
+            <td><strong>7. 기관 키 파일 가져오기</strong> 한 번</td></tr>
+        <tr><td>이미 쓰는 학교가 <strong>키를 바꾼다</strong> (재발급·갱신)</td>
+            <td><strong>B. 기관 키 파일</strong></td>
+            <td><a href="#secC4b">4-4-2</a> 로 새 키(비밀번호) → <strong>6</strong> 으로 새 파일 → 전달
+                <span class="small">(배포자가 다시 만들어 줄 필요 없음)</span></td>
+            <td><strong>7</strong> 로 다시 가져오기</td></tr>
+        <tr><td>새로 온 선생님 한 명</td>
+            <td>받은 길 그대로</td>
+            <td>A: 설치 파일 전달 · B: 설치 파일 + 기관 키 파일 전달</td>
+            <td>A: 설치만 · B: 설치 뒤 <strong>7</strong></td></tr>
+        <tr><td>추가 기능을 <strong>업데이트</strong>했다</td>
+            <td>받은 길 그대로</td>
+            <td>A: 잠긴 새 설치 파일 전달 · B: 새 설치 파일 전달(기관 키 파일은 그대로 다시 씀)</td>
+            <td>A: 설치만 · B: 설치 뒤 보관해 둔 파일로 <strong>7</strong></td></tr>
+      </table>
+      <p class="small">A 로 시작한 학교가 나중에 키를 바꾸면 그때부터 B 를 씁니다. 두 길은 겹치지 않습니다.
+         어느 경우든 <strong>올인원 인증은 선생님 각자</strong> 하셔야 AI 기능과 7 번 메뉴가 열립니다.</p>
+
+      <div class="note">
+        <strong>기관 키 파일(<span class="mono">.drmkey</span>)을 받은 선생님은 이렇게 합니다 — 비밀번호 없음</strong>
+        <ol class="steps" style="margin-top:8px">
+          <li><a href="#secC4a">4-4-1</a> 인증이 되어 있는지 확인합니다(안 되어 있으면 7 번 메뉴가 열리지 않습니다).</li>
+          <li>엑셀 [안내 및 설정] → <span class="mono">[기관 키 잠금(관리자)]</span> → <strong>7. 기관 키 파일 가져오기</strong>.
+              <span class="small">메뉴 이름에 (관리자)가 붙어 있지만 <strong>7 번은 선생님이 쓰는 항목</strong>입니다.
+              이 메뉴는 관리자 암호는 없고 올인원 인증만 있으면 열립니다.</span></li>
+          <li>받은 <span class="mono">.drmkey</span> 파일을 고릅니다. 이미 넣어 둔 개인 키가 있으면 "지워지고 학교 키로 바뀐다" 고 물어봅니다 — [예].
+              <span class="small">(개인 프롬프트·템플릿은 그대로입니다)</span></li>
+          <li><strong>"기관 키를 가져왔습니다"</strong> 창이 뜨면 끝입니다. 엑셀을 다시 켤 필요가 없습니다.
+              <span class="mono">[인증 상태 확인(올인원 연동)]</span> 을 열면 학교 키가 <strong>앞 4자와 길이만</strong> 보입니다.</li>
+        </ol>
+      </div>
+
+      <table>
+        <tr><th style="width:34%">기관 키 파일(<span class="mono">.drmkey</span>)에 대해</th><th>뜻</th></tr>
+        <tr><td>무엇이 들어 있나</td>
+            <td>잠근 키(암호문)와 잠금 정보, 그리고 모델·연결 방식 설정. <strong>평문 키는 없습니다.</strong>
+                열어 볼 이유는 없습니다.
+                <span class="small">가져오면 Gemini 연결 방식(선불/후불)은 <strong>학교 것으로 바뀌고</strong>,
+                모델·Temperature 는 비어 있을 때만 채워집니다(이미 고른 값은 그대로).</span></td></tr>
+        <tr><td>어디까지 안전한가</td>
+            <td>잠근 추가 기능 파일과 <strong>같습니다.</strong> 파일을 가진 사람은 학교 키로 AI 를 쓸 수 있으니
+                <strong>학교 밖으로 보내지 마세요.</strong> 학교 안에서 선생님께 직접 전달하는 정도는 됩니다.</td></tr>
+        <tr><td>가져올 때 비밀번호를 물어보나</td>
+            <td><strong>아닙니다.</strong> 선생님은 비밀번호를 모르는 것이 정상입니다. 가져온 뒤 키를 <strong>바꾸는</strong> 데는 비밀번호가 필요합니다.
+                다만 <strong>5. 비밀번호 분실</strong> 은 비밀번호 없이도 <span class="mono">키삭제</span> 를 입력하면 저장된 키를 모두 지우고 잠금을 풉니다 —
+                지워지면 파일을 다시 받아 7 번으로 넣으면 됩니다.</td></tr>
+        <tr><td>선생님 PC 에 이미 개인 키가 있다면</td>
+            <td>먼저 물어보고, [예] 를 고르면 개인 키는 지워지고 학교 키로 바뀝니다. 개인 프롬프트·템플릿은 그대로입니다.</td></tr>
+        <tr><td>이미 다른 학교 키로 잠겨 있다면</td>
+            <td>바꿀지 물어보고 <span class="mono">키교체</span> 를 입력해야 바뀝니다. 지워진 키는 되살릴 수 없습니다.</td></tr>
+        <tr><td>"이 PC 에서만 방식으로 잠근 것" 이라고 거절된다</td>
+            <td>관리자가 잠금 방식 <strong>2</strong> 로 잠근 파일입니다. 관리자가 <strong>2. 잠금 풀기</strong> 뒤 방식 <strong>1</strong> 로 다시 잠가
+                파일을 새로 만들어야 합니다.</td></tr>
+      </table>
 
       <div class="note warn">
         <strong>비밀번호를 잊으면 되살릴 수 없습니다.</strong>
@@ -964,7 +1075,7 @@
           <li>전출·퇴직하신 분의 PC 와 공용 PC 에서는 <strong>추가 기능 파일을 지워</strong> 주세요.</li>
         </ol>
         <p class="small" style="margin:8px 0 0">키가 새어 나갔다고 판단되면 <strong>발급처에서 그 키를 폐기하고
-           새 키를 발급</strong>받은 뒤 <a href="#secC4b">4-4-2</a> 로 다시 넣으세요.
+           새 키를 발급</strong>받은 뒤 위 표의 "키를 바꾸기" 대로 넣고, <strong>6 번으로 새 기관 키 파일</strong>을 만들어 나눠 주세요.
            요금은 <strong>키를 쓴 사람이 아니라 키를 발급받은 학교로</strong> 청구됩니다.</p>
       </div>
     </div>
@@ -990,10 +1101,15 @@
             <span class="small">(Gemini 를 연결 방식 2(후불)로 넣으셨다면 이 확인 창은 뜨지 않습니다)</span></li>
         <li>(학교 공용 키를 쓰는 경우) <a href="#secC5">4-5</a> 에서 <strong>기관 키 잠금</strong>을 걸었다.
             <span class="small">(학교 관리자만 해당)</span></li>
+        <li>(학교 공용 키를 받은 선생님) <strong>잠긴 설치 파일</strong>이면 4. 상태 보기 에 "켜져 있습니다" 가 나온다 /
+            <strong>기관 키 파일(<span class="mono">.drmkey</span>)</strong>을 받았으면 <strong>7. 기관 키 파일 가져오기</strong> 로 넣었다
+            (<a href="#secC5b">4-5-1</a>).</li>
         <li>(업데이트) <strong>[안내 및 설정] → <span class="mono">[인증 상태 확인(올인원 연동)]</span> 에서
             키가 그대로 있는지</strong> 확인했다.
-            <span class="small">업데이트는 추가 기능 파일을 새 파일로 바꾸므로,
-            <strong>비어 있으면 <a href="#secC4b">4-4-2</a> 로 다시 넣으셔야</strong> 합니다.</span></li>
+            <span class="small">업데이트는 추가 기능 파일을 새 파일로 바꾸므로 비어 있을 수 있습니다 —
+            본인 키를 쓰는 분은 <a href="#secC4b">4-4-2</a> 로 다시 넣고,
+            <strong>기관 키 파일을 받은 분은 보관해 둔 그 파일을 7. 기관 키 파일 가져오기 로 다시 넣으세요</strong>(파일은 버리지 마세요).
+            잠긴 설치 파일(A 길)은 새 파일도 잠긴 채 오므로 할 일이 없습니다.</span></li>
         <li><strong>마지막으로</strong> AI 기능을 하나 실행해 오류 없이 동작한다.
             <span class="small">(예: 셀 하나를 고르고 <strong>DRM AI → [Gemini 실행] →
             <span class="mono">[Gemini로 범위를 단일 셀에 처리]</span></strong>.
@@ -1002,14 +1118,13 @@
       </ul>
       <div class="note warn">
         <strong>주의:</strong> <span class="mono">[안내 및 설정]</span> 의
-        <strong>[Gemini 연결 방식(기관 관리자)]</strong> 과 <strong>[기관 키 잠금(관리자)]</strong> 은
-        <strong>학교 관리자용</strong>입니다. 필요 없으면 열지 마세요.
+        <strong>[Gemini 연결 방식(기관 관리자)]</strong> 은 <strong>학교 관리자용</strong>입니다(관리자 암호 필요). 필요 없으면 열지 마세요.
         <span class="small">(<a href="#secC4b">4-4-2</a> 안에서 물어보는 <strong>"Gemini 연결 방식 1/2"</strong> 와는
-        <strong>다른 메뉴</strong>입니다. 선생님이 고르실 것은 그 안의 1/2 뿐이고, 이 메뉴는 관리자 암호가 필요합니다)</span>
-        <p class="small" style="margin:6px 0 0"><strong>[API 키 입력(사용자)]</strong> 과
-           <strong>[Model/Temperature 설정(사용자)]</strong> 은 <strong>선생님이 직접 쓰시는 메뉴</strong>입니다
-           (<a href="#secC4b">4-4-2</a>). 예전 판에서는 "API 설정값을 임의로 수정하지 말라" 고 안내했지만,
-           지금은 <strong>쓰시는 분이 본인 키를 직접 넣는 방식</strong>으로 바뀌었습니다.</p>
+        <strong>다른 메뉴</strong>입니다. 선생님이 고르실 것은 그 안의 1/2 뿐입니다)</span>
+        <p class="small" style="margin:6px 0 0"><strong>[기관 키 잠금(관리자)]</strong> 안에서 선생님이 쓰는 것은
+           <strong>4. 상태 보기</strong> 와 <strong>7. 기관 키 파일 가져오기</strong> 뿐입니다(<a href="#secC5b">4-5-1</a>). 나머지 번호는 학교 관리자용입니다.
+           이 메뉴는 관리자 암호는 없고 올인원 인증만 있으면 열립니다.
+           <strong>[API 키 입력(사용자)]</strong> 과 <strong>[Model/Temperature 설정(사용자)]</strong> 은 <strong>선생님이 직접 쓰시는 메뉴</strong>입니다.</p>
       </div>
     </div>
 
@@ -1046,7 +1161,15 @@
               다른 폴더에 있으면 동작하지 않습니다.</td>
         </tr>
         <tr>
-          <td>AI 기능이나 <span class="mono">[API 키 입력(사용자)]</span> 을 누르면
+          <td><strong>기관 키 파일(<span class="mono">.drmkey</span>)을 가져오는데</strong> "이 파일은 쓸 수 없습니다" 가 나온다</td>
+          <td>창의 둘째 줄이 이유입니다 — <strong>"이 PC 에서만 방식"</strong>이면 관리자가 방식 1 로 다시 잠가 파일을 새로 만들어야 하고,
+              <strong>"만든 그대로가 아닙니다"</strong>이면 파일이 손상·변조된 것이니 <strong>다시 받으세요</strong>.
+              <strong>"잠금 규격이 다릅니다"</strong>·<strong>"기관 키 파일이 아닙니다"</strong> 이면 다른 판이나 다른 파일입니다 — 지금 판으로 만든 파일을 다시 받으세요.
+              파일이 거절되면 아무것도 바뀌지 않고, 넣은 뒤 검사에 실패하면 <strong>이전 상태로 되돌립니다</strong>.
+              "파일 저장에 실패했습니다" 가 나오면 Excel 을 닫을 때 [예] 로 저장하세요(<a href="#secC5b">4-5-1</a>).</td>
+        </tr>
+        <tr>
+          <td>AI 기능이나 <span class="mono">[API 키 입력(사용자)]</span>·<span class="mono">[기관 키 잠금(관리자)]</span>(7 번 포함) 을 누르면
               <strong>"올인원 교사 도우미의 인증이 필요합니다"</strong> 창</td>
           <td>올인원에서 <strong>메일 인증</strong>을 마치고 <strong>올인원을 한 번 실행</strong>하세요
               (<a href="#secC4a">4-4-1</a>). <strong>인증키는 메일로 신청해 받는 것이라 회신에 1~2일</strong> 걸립니다.
@@ -1135,7 +1258,7 @@
           <td>화면 위쪽의 <strong>[실패]</strong> 줄을 먼저 확인하세요.
               <strong>"이 시스템에서 스크립트를 실행할 수 없으므로"</strong> 같은 문구가 보이면
               학교 관리 PC의 보안 정책이 막은 것입니다.
-              <strong>학교 관리자(배포자)에게 화면을 캡처해 문의</strong>하세요.
+              <strong>학교 관리자(없으면 배포자)에게 화면을 캡처해 문의</strong>하세요.
               급할 때는 아래 <a href="#sec63"><strong>6-3</strong></a> 의 절차로 직접 마무리할 수 있습니다.</td>
         </tr>
         <tr>
@@ -1254,7 +1377,7 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
         <strong>이 방법은 <span class="mono">DRM_AI_설치및업데이트.bat</span> 이 폴더에 <u>있는데</u>
         실행이 정책으로 막힐 때만 쓰는 임시 수단입니다.</strong>
         <p class="small" style="margin:6px 0 0">폴더에 bat 파일이 <strong>아예 없다면</strong> 이 방법을 쓰지 말고
-           <a href="#sec1">1-2)</a> 대로 <strong>학교 관리자(배포자)에게 올바른 배포본을 요청</strong>하세요.
+           <a href="#sec1">1-2)</a> 대로 <strong>학교 관리자(없으면 배포자)에게 올바른 배포본을 요청</strong>하세요.
            이 방법만으로는 <strong>Python 파일 배치와 차단 해제가 끝나지 않아</strong> 기능이 반쯤만 동작합니다.</p>
       </div>
       <ol class="steps">
@@ -1264,7 +1387,7 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
         <li>이어서 위 <strong>②·③</strong> 으로 Python 패키지와 파일을 갖추고,
             <a href="#secC1">4-1</a> 의 <strong>[찾아보기] 등록</strong>까지 하면 설치가 완료됩니다.</li>
       </ol>
-      <p class="small">이 방법으로도 해결되지 않으면 <strong>학교 관리자(배포자)에게 화면을 캡처해 문의</strong>하세요.</p>
+      <p class="small">이 방법으로도 해결되지 않으면 <strong>학교 관리자(없으면 배포자)에게 화면을 캡처해 문의</strong>하세요.</p>
     </div>
 
     <!-- ===================== 7. FAQ ===================== -->
@@ -1299,7 +1422,7 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
          추가 기능 폴더를 직접 열어 볼 때도 <strong>그 외의 파일은 건드리지 마세요.</strong></p>
 
       <h3>Q8. 개인 프롬프트·템플릿을 백업하지 않고 업데이트했어요.</h3>
-      <p>먼저 학교 관리자(배포자)에게 문의하세요.
+      <p>먼저 학교 관리자(없으면 배포자)에게 문의하세요.
          이후에는 업데이트 <strong>전에</strong> 반드시 <a href="#backup">2-4</a>의 백업을 먼저 수행하시기 바랍니다.</p>
     </div>
 
@@ -1322,7 +1445,7 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
     </div>
 
     <p class="footer">
-      스스로 해결이 어려울 때 학교 관리자(배포자)에게 함께 알려 주면 좋은 정보:
+      스스로 해결이 어려울 때 학교 관리자(없으면 배포자)에게 함께 알려 주면 좋은 정보:
       <strong>PC명 / 오류 화면 캡처 / 진행한 단계 번호(화면의 [12/14] 표시) / 처음 설치 · 업데이트 여부</strong>
     </p>
   </div>
