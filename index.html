@@ -7,6 +7,8 @@
     <!-- 구글 폰트: Noto Sans KR, Outfit, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 6번 실습 시뮬레이터(GitHub Pages) 첫 클릭을 빠르게: DNS 선조회 -->
+    <link rel="dns-prefetch" href="https://dhsy3206.github.io">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         /* ==========================================
@@ -1021,6 +1023,105 @@
             margin-top: 1.5rem;
         }
 
+        /* 링크(a)를 .btn-neon 단추로 쓸 때: 방문 여부와 무관하게 흰 글자·밑줄 없음 */
+        a.btn-neon,
+        a.btn-neon:visited,
+        a.btn-neon:hover,
+        a.btn-neon:focus {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a.btn-neon:focus-visible {
+            outline: 3px solid var(--accent-cyan);
+            outline-offset: 3px;
+        }
+
+        /* 6번 큰 단추 2개(설치 설명서·시뮬레이터): 좁은 화면에서는 폭을 채우고 여백을 줄인다 */
+        .install-guide .install-actions a.install-cta-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+            word-break: keep-all;
+        }
+
+        @media (max-width: 576px) {
+            .install-guide .install-actions a.install-cta-btn {
+                width: 100%;
+                padding: 0.9rem 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* 6번: 설치 후 첫 40분 실습 시뮬레이터 바로가기 */
+        .sim-launch {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--panel-border);
+            word-break: keep-all;        /* 한글 어절 중간에서 끊기지 않게 */
+            overflow-wrap: anywhere;     /* 긴 주소만 예외적으로 끊는다 */
+        }
+
+        .sim-launch h3 {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0.6rem auto 0;
+            max-width: 700px;
+            line-height: 1.5;
+        }
+
+        .sim-launch-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem auto 0;
+            max-width: 700px;
+            text-align: left;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .sim-launch-steps li {
+            background: #fdfbf7;
+            border: 1px solid var(--panel-border);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 6px;
+            padding: 0.7rem 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .sim-launch-steps li strong {
+            color: var(--text-primary);
+        }
+
+        .sim-launch-btn {
+            background: var(--accent-cyan);
+        }
+
+        .sim-launch-btn:hover {
+            background: #b84a31;
+        }
+
+        .sim-launch-ext {
+            font-size: 0.9em;
+            opacity: 0.85;
+        }
+
+        .sim-launch-note {
+            margin: 1rem auto 0;
+            max-width: 700px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .sim-launch-note a {
+            color: var(--accent-purple);
+        }
+
         @media (max-width: 992px) {
             .install-doc-menu,
             .install-route,
@@ -1125,7 +1226,7 @@
                 <li><a href="#parallel-concept">3. 병렬처리 및 시험 출제</a></li>
                 <li><a href="#student-check">4. 학생부 자동화 점검</a></li>
                 <li><a href="#motivation">5. 기대효과 & 이점</a></li>
-                <li><a href="#install-guide">6. DRM AI 설치 및 업데이트</a></li>
+                <li><a href="#install-guide">6. 설치·업데이트·시뮬레이터</a></li>
                 <li><a href="#video-guide">7. 안내 영상 및 전자책</a></li>
             </ul>
         </aside>
@@ -1888,8 +1989,8 @@
             <!-- 6. DRM AI 설치 및 업데이트 방법 가이드 -->
             <section id="install-guide" class="install-guide">
                 <div class="section-header">
-                    <h2>6. DRM AI 설치 및 업데이트 방법 가이드</h2>
-                    <p>처음 설치와 업데이트 모두 <strong>더블클릭 한 번</strong>으로 끝나는 자동 설치 설명서를 제공합니다.</p>
+                    <h2>6. DRM AI 설치·업데이트 및 40분 실습 시뮬레이터</h2>
+                    <p>처음 설치와 업데이트 모두 <strong>더블클릭 한 번</strong>으로 끝나는 자동 설치 설명서와, 설치 후 <strong>브라우저에서 바로 열리는 실습 시뮬레이터</strong>로 핵심 기능을 약 40분 만에 익히는 길을 함께 안내합니다.</p>
                 </div>
 
                 <div class="install-ledger" style="padding: 3rem 2rem; text-align: center;">
@@ -1916,9 +2017,33 @@
                     </p>
 
                     <div class="install-actions" style="justify-content: center; margin-top: 2rem;">
-                        <a href="DRM_AI_설치및업데이트_통합설명서.html" target="_blank" rel="noopener" style="text-decoration: none;">
-                            <button class="btn-neon" style="padding: 1rem 2.5rem; font-size: 1.1rem; background: var(--accent-purple);">설치 및 업데이트 통합 설명서 열기</button>
-                        </a>
+                        <a class="btn-neon install-cta-btn" href="DRM_AI_설치및업데이트_통합설명서.html" target="_blank" rel="noopener" title="새 창(탭)에서 열립니다">설치 및 업데이트 통합 설명서 열기</a>
+                    </div>
+
+                    <!-- 설치 후 첫 40분: 브라우저 실습 시뮬레이터 (새 창) -->
+                    <div class="sim-launch" role="region" aria-labelledby="sim-launch-title">
+                        <div class="install-kicker">설치 후 첫 40분 · 실습 시뮬레이터</div>
+                        <h3 id="sim-launch-title">엑셀을 켜지 않고, 요금 없이, 브라우저에서 바로 익히는 DRM AI</h3>
+                        <p class="install-summary" style="margin: 0.9rem auto 0; max-width: 700px;">
+                            실제 리본 메뉴·대화창·안내 문구를 그대로 흉내 낸 <strong>연습장</strong>입니다.
+                            단추를 눌러 보고, 범위를 끌어 보고, 칸에 값을 적어 보면서 <strong>일곱 가지 미션</strong>을 익힙니다.
+                            AI 서버로 나가지 않아 <strong>API 요금이 한 푼도 들지 않고</strong>, 틀려도 아무 일이 일어나지 않습니다.
+                            핵심 미션 넷(메뉴 찾기 · 행 단위 병렬 처리 · 정리하고 나누기 · 시험 출제 풀코스)만 마쳐도
+                            <strong>약 40분</strong>이면 이 추가 기능의 8할을 쓰실 수 있습니다.
+                        </p>
+                        <ol class="sim-launch-steps" aria-label="권장 순서">
+                            <li><strong>① 설치</strong> — 위 통합 설명서대로 추가 기능을 설치하고 API 키를 등록합니다.</li>
+                            <li><strong>② 시뮬레이터 40분</strong> — 아래 단추로 새 창을 열어 메뉴 위치와 순서, 자주 하는 실수까지 손에 익힙니다. (설치 전에 먼저 열어 보셔도 됩니다)</li>
+                            <li><strong>③ 실제로 한 번 더</strong> — 시뮬레이터 사이트의 실습 엑셀 파일 6개를 내려받아, 설치한 추가 기능으로 같은 미션을 실행합니다.</li>
+                        </ol>
+                        <div class="install-actions" style="justify-content: center; margin-top: 1.5rem;">
+                            <a class="btn-neon install-cta-btn sim-launch-btn" href="https://dhsy3206.github.io/DRM-AI-Simulator/" target="_blank" rel="noopener noreferrer" title="새 창(탭)에서 열립니다 — dhsy3206.github.io" aria-label="DRM AI 40분 실습 시뮬레이터를 새 창에서 열기"><span class="sim-launch-label">🎮 40분 실습 시뮬레이터 열기&nbsp;<span class="sim-launch-ext" aria-hidden="true">↗</span></span></a>
+                        </div>
+                        <p class="sim-launch-note">
+                            새 창(탭)으로 열리므로 이 안내 페이지는 그대로 남습니다.
+                            내려받기·설치 없이 휴대폰·태블릿에서도 열립니다.<br>
+                            주소: <a href="https://dhsy3206.github.io/DRM-AI-Simulator/" target="_blank" rel="noopener noreferrer">dhsy3206.github.io/DRM-AI-Simulator</a>
+                        </p>
                     </div>
                 </div>
             </section>
