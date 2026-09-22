@@ -7,8 +7,6 @@
     <!-- 구글 폰트: Noto Sans KR, Outfit, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- 6번 실습 시뮬레이터(GitHub Pages) 첫 클릭을 빠르게: DNS 선조회 -->
-    <link rel="dns-prefetch" href="https://dhsy3206.github.io">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         /* ==========================================
@@ -1041,8 +1039,21 @@
         .install-guide .install-actions a.install-cta-btn {
             padding: 1rem 2.5rem;
             font-size: 1.1rem;
+            line-height: normal;         /* <button> 시절과 같은 높이 유지 (body 1.7 상속 방지) */
             text-align: center;
             word-break: keep-all;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         @media (max-width: 576px) {
@@ -1098,11 +1109,11 @@
         }
 
         .sim-launch-btn {
-            background: var(--accent-cyan);
+            background: #b84a31;         /* 테라코타 진한 톤: 흰 글자 대비 5.17:1 (AA) */
         }
 
         .sim-launch-btn:hover {
-            background: #b84a31;
+            background: #a8432c;
         }
 
         .sim-launch-ext {
@@ -1226,7 +1237,7 @@
                 <li><a href="#parallel-concept">3. 병렬처리 및 시험 출제</a></li>
                 <li><a href="#student-check">4. 학생부 자동화 점검</a></li>
                 <li><a href="#motivation">5. 기대효과 & 이점</a></li>
-                <li><a href="#install-guide">6. 설치·업데이트·시뮬레이터</a></li>
+                <li><a href="#install-guide">6. 설치·업데이트·40분 실습</a></li>
                 <li><a href="#video-guide">7. 안내 영상 및 전자책</a></li>
             </ul>
         </aside>
@@ -1986,11 +1997,11 @@
                 </div>
             </section>
 
-            <!-- 6. DRM AI 설치 및 업데이트 방법 가이드 -->
+            <!-- 6. DRM AI 설치·업데이트 및 40분 실습 시뮬레이터 -->
             <section id="install-guide" class="install-guide">
                 <div class="section-header">
                     <h2>6. DRM AI 설치·업데이트 및 40분 실습 시뮬레이터</h2>
-                    <p>처음 설치와 업데이트 모두 <strong>더블클릭 한 번</strong>으로 끝나는 자동 설치 설명서와, 설치 후 <strong>브라우저에서 바로 열리는 실습 시뮬레이터</strong>로 핵심 기능을 약 40분 만에 익히는 길을 함께 안내합니다.</p>
+                    <p>처음 설치와 업데이트 모두 <strong>더블클릭 한 번</strong>으로 끝나는 자동 설치 설명서와, 설치 전후 언제든 <strong>브라우저에서 바로 열리는 실습 시뮬레이터</strong>로 핵심 기능을 약 40분 만에 익히는 길을 함께 안내합니다.</p>
                 </div>
 
                 <div class="install-ledger" style="padding: 3rem 2rem; text-align: center;">
@@ -2022,7 +2033,7 @@
 
                     <!-- 설치 후 첫 40분: 브라우저 실습 시뮬레이터 (새 창) -->
                     <div class="sim-launch" role="region" aria-labelledby="sim-launch-title">
-                        <div class="install-kicker">설치 후 첫 40분 · 실습 시뮬레이터</div>
+                        <div class="install-kicker">처음 40분 · 실습 시뮬레이터</div>
                         <h3 id="sim-launch-title">엑셀을 켜지 않고, 요금 없이, 브라우저에서 바로 익히는 DRM AI</h3>
                         <p class="install-summary" style="margin: 0.9rem auto 0; max-width: 700px;">
                             실제 리본 메뉴·대화창·안내 문구를 그대로 흉내 낸 <strong>연습장</strong>입니다.
@@ -2031,13 +2042,13 @@
                             핵심 미션 넷(메뉴 찾기 · 행 단위 병렬 처리 · 정리하고 나누기 · 시험 출제 풀코스)만 마쳐도
                             <strong>약 40분</strong>이면 이 추가 기능의 8할을 쓰실 수 있습니다.
                         </p>
-                        <ol class="sim-launch-steps" aria-label="권장 순서">
-                            <li><strong>① 설치</strong> — 위 통합 설명서대로 추가 기능을 설치하고 API 키를 등록합니다.</li>
-                            <li><strong>② 시뮬레이터 40분</strong> — 아래 단추로 새 창을 열어 메뉴 위치와 순서, 자주 하는 실수까지 손에 익힙니다. (설치 전에 먼저 열어 보셔도 됩니다)</li>
-                            <li><strong>③ 실제로 한 번 더</strong> — 시뮬레이터 사이트의 실습 엑셀 파일 6개를 내려받아, 설치한 추가 기능으로 같은 미션을 실행합니다.</li>
+                        <ol class="sim-launch-steps" role="list" aria-label="권장 순서">
+                            <li><strong>① 시뮬레이터 40분</strong> — 설치 여부와 관계없이 아래 단추로 새 창을 열어, 메뉴 위치와 순서, 자주 하는 실수까지 손에 익힙니다. 설치·API 키·요금 모두 필요 없습니다.</li>
+                            <li><strong>② 설치</strong> — 위 통합 설명서대로 추가 기능을 설치하고 API 키를 등록합니다. 이미 설치하셨다면 건너뜁니다.</li>
+                            <li><strong>③ 실제로 한 번 더</strong> — 시뮬레이터 사이트의 실습 자료 ZIP(약 0.3MB)을 내려받아 압축을 푼 뒤, 실습 엑셀 파일 6개로 설치한 추가 기능에서 같은 미션을 실행합니다. (이때는 실제 AI를 부르므로 미션 하나에 수십 원 수준의 요금이 듭니다)</li>
                         </ol>
                         <div class="install-actions" style="justify-content: center; margin-top: 1.5rem;">
-                            <a class="btn-neon install-cta-btn sim-launch-btn" href="https://dhsy3206.github.io/DRM-AI-Simulator/" target="_blank" rel="noopener noreferrer" title="새 창(탭)에서 열립니다 — dhsy3206.github.io" aria-label="DRM AI 40분 실습 시뮬레이터를 새 창에서 열기"><span class="sim-launch-label">🎮 40분 실습 시뮬레이터 열기&nbsp;<span class="sim-launch-ext" aria-hidden="true">↗</span></span></a>
+                            <a class="btn-neon install-cta-btn sim-launch-btn" href="https://dhsy3206.github.io/DRM-AI-Simulator/" target="_blank" rel="noopener noreferrer" title="새 창(탭)에서 열립니다 — dhsy3206.github.io"><span class="sim-launch-label">🎮 40분 실습 시뮬레이터 열기&nbsp;<span class="sim-launch-ext" aria-hidden="true">↗</span><span class="sr-only">(새 창)</span></span></a>
                         </div>
                         <p class="sim-launch-note">
                             새 창(탭)으로 열리므로 이 안내 페이지는 그대로 남습니다.
@@ -2088,9 +2099,9 @@
                     <!-- 맺음말 및 행동촉구 -->
                     <div class="cta-section" style="margin-top: 2rem;">
                         <h3>혁신적인 스마트 교무실, 지금 바로 함께 만들어 볼까요?</h3>
-                        <p>학교의 보안을 지키면서 AI 기능을 최대로 사용할 수 있는 최선의 파트너. 위 안내 영상들과 DRM AI 설치 및 업데이트 안내를 확인한 뒤, 교사용 연수 자료로 실제 활용 흐름까지 이어서 살펴보세요.</p>
+                        <p>학교의 보안을 지키면서 AI 기능을 최대로 사용할 수 있는 최선의 파트너. 위 안내 영상들과 DRM AI 설치·업데이트 안내, 40분 실습 시뮬레이터를 확인한 뒤, 교사용 연수 자료로 실제 활용 흐름까지 이어서 살펴보세요.</p>
                         <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                            <a href="https://drive.google.com/file/d/16mmv8TMYZZxJFkAHavJ6kWjnjjBmJKvd/view?usp=sharing" target="_blank" rel="noopener" style="text-decoration: none;">
+                            <a href="https://drive.google.com/file/d/1mxBD4cWqykAzpl_9cOyM_rNBSv1v2x1k/view?usp=sharing" target="_blank" rel="noopener" style="text-decoration: none;">
                                 <button class="btn-neon" style="padding: 1rem 2.5rem; font-size: 1.1rem; background: var(--accent-cyan);">
                                     📙 교사용 스마트 연수 전자책 열기
                                 </button>
