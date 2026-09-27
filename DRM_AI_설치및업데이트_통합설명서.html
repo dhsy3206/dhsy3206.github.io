@@ -533,6 +533,19 @@
           <li><span class="mono">pip 이 없어 ensurepip 로 먼저 설치합니다...</span> /
               <span class="mono">pip 업그레이드를 --user 모드로 다시 시도합니다...</span>
               <span class="small">— 자동 복구 중입니다.</span></li>
+          <li><span class="mono">VBA 가 쓰는 Python: ...</span>
+              <span class="small">— 추가 기능이 실제로 쓰는 Python 을 알려 주는 줄입니다.
+              PDF 첨부의 학생 정보 가리기에 쓰는 <strong>PDF 도구(PyMuPDF)</strong>를 그 Python 모두에 확인합니다.</span></li>
+          <li><span class="mono">추가 기능이 쓰는 다른 Python 에도 필수 패키지를 설치합니다: ...</span>
+              <span class="small">— Python 이 여러 개인 PC 에서 나옵니다. 조금 더 걸릴 뿐 정상입니다.</span></li>
+          <li><span class="mono">PDF 도구(PyMuPDF)를 다시 설치합니다...</span> /
+              <span class="mono">PDF 도구(PyMuPDF)를 처음부터 다시 설치합니다...</span>
+              <span class="small">— 없거나 옛 판이라 자동으로 다시 설치하는 중입니다. 그대로 두세요.</span></li>
+          <li><span class="mono">패키지 서버에 연결되는지 확인합니다...</span>
+              <span class="small">— 앞의 패키지 설치가 다 끝나지 않았을 때 한 번만 확인합니다(1분 안쪽).</span></li>
+          <li><span class="mono">[주의] 패키지 서버에 연결되지 않습니다. 남은 Python 에는 설치를 시도하지 않고 지금 설치된 것만 확인합니다.</span>
+              <span class="small">— 인터넷이 끊겼거나 막힌 PC 입니다. 오래 기다리지 않고 다음 단계(추가기능 등록)로 넘어갑니다.
+              창을 닫지 말고 끝까지 둔 뒤, 인터넷에 연결해 다시 더블클릭하세요.</span></li>
         </ul>
         <p class="small" style="margin:6px 0 0">빨간 <strong>[실패]</strong> 줄이 나오거나
            <strong>"...하지 못했습니다"</strong> 로 끝나는 문구가 보일 때만
@@ -1289,6 +1302,25 @@
               예: <span class="mono">python -m pip install PySide6</span></td>
         </tr>
         <tr>
+          <td>"PDF 도구(PyMuPDF)를 준비하지 못했습니다."</td>
+          <td>인터넷 연결을 확인하고 <strong>다시 더블클릭</strong>하세요. 이 상태에서는
+              행 단위 처리에서 <strong>PDF 첨부를 AI 로 보내지 않습니다</strong>(학생 정보를 가릴 수 없어서 — 결과 칸에 안내가 붙습니다).
+              두세 번 해도 같으면 <a href="#sec63">6-3 ②</a> 의 <strong>PDF 도구 명령 두 줄</strong>을 실행하세요.</td>
+        </tr>
+        <tr>
+          <td>"학생 정보 가리기 기능을 확인하지 못했습니다."</td>
+          <td>인터넷 연결을 확인하고 <strong>다시 더블클릭</strong>하세요.
+              두세 번 해도 같으면 <a href="#sec63">6-3 ②</a> 의 <strong>PDF 도구 명령 두 줄</strong>을 실행하세요.
+              그래도 <strong>"같은 결과가 되풀이되면 판매자에게 알려 주세요."</strong> 가 함께 나오면
+              받은 파일끼리 판이 섞인 것이니 학교 관리자(없으면 배포자)에게 화면을 캡처해 알려 주세요.</td>
+        </tr>
+        <tr>
+          <td>"추가 기능이 옛 Python(3.x)을 먼저 찾습니다."</td>
+          <td>이 PC 에 3.10 보다 옛 Python 이 먼저 잡히는 자리에 있습니다. 배포 폴더의
+              <span class="mono">python-3.13.x-amd64.exe</span> 로 Python 을 설치한 뒤 bat 를 다시 더블클릭하세요.
+              그전까지는 PDF 첨부가 AI 로 가지 않을 수 있습니다.</td>
+        </tr>
+        <tr>
           <td>"설치된 패키지 사이에 버전이 맞지 않는 부분이 있습니다:"</td>
           <td><strong>실패가 아닙니다.</strong> 대개 그대로 동작하므로 그냥 진행하세요.
               나중에 기능 오류가 나면 bat 를 한 번 더 실행하면 정리됩니다.</td>
@@ -1321,19 +1353,45 @@
          나중에 기능 오류가 나면 같은 방법으로 해제해 보세요.</p>
 
       <h4>② "모듈 없음" 오류가 날 때 — 패키지 다시 설치</h4>
+      <p><strong>먼저 추가 기능이 쓰는 Python 을 찾습니다.</strong> 가장 쉬운 곳은 설치 프로그램 화면의
+         <span class="mono">VBA 가 쓰는 Python: ...</span> 줄입니다. 그 줄에 경로가 <strong>여러 개</strong> 나오면
+         (<span class="mono">/</span> 로 나뉩니다) <strong>설치 화면의 VBA 가 쓰는 Python: 줄에 나온 경로마다 아래 명령을 되풀이하세요.</strong>
+         기능마다 다른 Python 을 쓸 수 있어서, 한 경로만 고치면 다른 기능은 그대로 멈춰 있습니다.</p>
+      <p>그 줄을 볼 수 없으면 아래 자리를 파일 탐색기 주소창에 붙여넣어 파일이 있는지 보세요.
+         행 단위 처리는 PATH 의 <span class="mono">python</span> 이 아니라 이 순서로 찾아 <strong>먼저 있는 것</strong>을 씁니다.</p>
+      <ol class="steps">
+        <li><span class="mono">C:\Python313\python.exe</span></li>
+        <li><span class="mono">%LOCALAPPDATA%\Programs\Python\Python313\python.exe</span>
+            <span class="small">— 설치 프로그램이 동봉 파일로 설치한 Python 은 대개 여기입니다</span></li>
+        <li>둘 다 없으면 같은 두 자리의 <span class="mono">Python314</span> · <span class="mono">Python312</span> · <span class="mono">Python311</span> · <span class="mono">Python310</span></li>
+        <li>그래도 없으면 Windows 에 등록된 Python, 그다음 PATH 의 <span class="mono">python</span></li>
+      </ol>
+      <p class="small"><strong>배치 절약 모드는 찾는 순서가 다릅니다</strong> — 3.13 · 3.12 · 3.11 뒤 PATH 의 python 입니다
+         (같은 두 자리만 보고, <span class="mono">Python314</span> · <span class="mono">Python310</span> 과 Windows 등록은 보지 않습니다).
+         그래서 <span class="mono">Python314</span> 와 <span class="mono">Python312</span> 가 함께 있는 PC 처럼 행 단위 처리와 배치 절약 모드가 <strong>서로 다른 Python</strong> 을 쓸 수 있습니다 —
+         그때는 두 경로 모두에 아래 명령을 실행하세요.</p>
+      <p class="small">아래 명령의 <span class="mono">"%LOCALAPPDATA%\Programs\Python\Python313\python.exe"</span> 를
+         <strong>찾은 경로로 바꿔</strong> 쓰세요(큰따옴표는 남겨 둡니다). 2번 자리라면 그대로 쓰면 됩니다.</p>
       <p><strong>CMD 창 여는 법</strong>: 키보드 <span class="key">Win</span> 키를 누르고 <span class="mono">cmd</span> 를 입력한 뒤
          <span class="key">Enter</span> 를 누르면 검은 창이 열립니다. 아래 세 줄을 <strong>한 번에 복사해 붙여넣고</strong>
          <span class="key">Enter</span> 를 누르세요. (붙여넣기는 마우스 오른쪽 클릭)</p>
-      <p class="small">먼저 <span class="mono">python --version</span> 을 입력해
+      <p class="small">먼저 <span class="mono">"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" --version</span> 을 입력해
          <span class="mono">Python 3.13.x</span> 처럼 버전이 나오는지 확인하세요.
-         명령을 알 수 없다는 메시지가 나오면 아래 명령이 모두 실패하므로,
-         이 문단 맨 아래의 <strong>Add python.exe to PATH</strong> 안내를 먼저 처리하세요.</p>
-      <pre>python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeout 60 pip
-python -m pip install --disable-pip-version-check --retries 5 --timeout 60 requests openai google-genai pillow PyMuPDF yt-dlp PySide6 openpyxl
-python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeout 60 google-auth google-auth-oauthlib google-api-python-client</pre>
+         경로를 찾을 수 없다는 메시지가 나오면 아래 명령이 모두 실패하므로,
+         위 순서로 경로를 다시 찾거나 이 문단 맨 아래의 Python 다시 설치 안내를 먼저 처리하세요.</p>
+      <pre>"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" -m pip install --upgrade --disable-pip-version-check --retries 5 --timeout 60 pip
+"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" -m pip install --disable-pip-version-check --retries 5 --timeout 60 requests openai google-genai pillow "PyMuPDF>=1.26.7" yt-dlp PySide6 openpyxl
+"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" -m pip install --upgrade --disable-pip-version-check --retries 5 --timeout 60 google-auth google-auth-oauthlib google-api-python-client</pre>
+      <p class="small"><span class="mono">"PyMuPDF>=1.26.7"</span> 의 <strong>큰따옴표를 지우지 마세요.</strong>
+         CMD 에서 따옴표 밖의 <span class="mono">&gt;</span> 는 "파일로 내보내기" 로 읽혀 명령이 망가집니다.</p>
+      <p><strong>PDF 도구 명령 두 줄</strong> — 설치 프로그램이 <span class="mono">"PDF 도구(PyMuPDF)를 준비하지 못했습니다."</span> 나
+         <span class="mono">"학생 정보 가리기 기능을 확인하지 못했습니다."</span> 로 끝났을 때 이 두 줄만 실행하세요.
+         둘째 줄이 <span class="mono">1.26.7</span> 이상의 숫자를 보여 주면 성공입니다.</p>
+      <pre>"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" -m pip install --upgrade --disable-pip-version-check --retries 5 --timeout 60 "PyMuPDF>=1.26.7"
+"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" -c "import pymupdf; print(pymupdf.VersionBind)"</pre>
       <div class="note ok">
         <strong>제대로 됐는지 확인하는 명령</strong> — 아래 한 줄을 붙여넣고 <span class="key">Enter</span> 를 누르세요.
-        <pre style="margin:8px 0 0">python -c "import requests, openai, PIL, fitz, yt_dlp, PySide6, openpyxl; from google import genai; print('IMPORT_OK')"</pre>
+        <pre style="margin:8px 0 0">"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" -c "import requests, openai, PIL, pymupdf, yt_dlp, PySide6, openpyxl; from google import genai; print('IMPORT_OK')"</pre>
         <p class="small" style="margin:8px 0 0"><strong><span class="mono">IMPORT_OK</span> 가 보이면 성공</strong>입니다.
            노란색 <span class="mono">WARNING</span> 은 무시해도 됩니다.
            <span class="mono">ModuleNotFoundError: No module named 'xxx'</span> 가 나오면
@@ -1346,7 +1404,7 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
          권한 오류가 나면 첫 줄만 <span class="mono">python -m pip install --user --upgrade pip</span> 로 바꿔 실행하세요.</p>
 
       <h4>③ "파일을 찾을 수 없다"는 오류가 날 때 — Python 파일 확인</h4>
-      <p>배포 폴더의 <span class="mono">.py</span> 파일 <strong>12개</strong>가
+      <p>배포 폴더의 <span class="mono">.py</span> 파일 <strong>13개</strong>가
          <span class="mono">C:\MyTrustedFiles</span> 에 모두 있어야 합니다. 없으면 그 폴더로 복사(덮어쓰기)하세요.
          <span class="small">(<span class="mono">C:\MyTrustedFiles</span> 폴더 자체가 없으면
          <span class="mono">C:\</span> 에 <strong>MyTrustedFiles</strong> 라는 이름으로 새 폴더를 만든 뒤 복사하세요)</span></p>
@@ -1369,6 +1427,9 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
         <tr>
           <td><span class="mono">send_email_gmail.py</span></td><td><span class="mono">batch_llm_processor.py</span></td>
         </tr>
+        <tr>
+          <td><span class="mono">drm_pseudonym.py</span></td><td><span class="small">(학생 정보 자동 가리기 — 행 단위 처리가 함께 씁니다)</span></td>
+        </tr>
       </table>
       <p class="small"><span class="mono">.xlam</span> 파일은 이 폴더에 넣지 않습니다. 다른 폴더에 두면 기능이 동작하지 않습니다.</p>
 
@@ -1387,6 +1448,10 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
         <li>이어서 위 <strong>②·③</strong> 으로 Python 패키지와 파일을 갖추고,
             <a href="#secC1">4-1</a> 의 <strong>[찾아보기] 등록</strong>까지 하면 설치가 완료됩니다.</li>
       </ol>
+      <p class="small"><strong>③ 의 <span class="mono">.py</span> 13개(<span class="mono">drm_pseudonym.py</span> 포함)를 모두 복사하고
+         ② 의 <span class="mono">"PyMuPDF>=1.26.7"</span> 설치까지 마쳐야 합니다.</strong>
+         하나라도 빠지면 첨부 파일이 있는 행 단위 처리는 <strong>"설치된 파이썬 도우미가 옛 판이라"</strong> 창을 띄우고
+         실행하지 않거나, PDF 첨부를 AI 로 보내지 않습니다(학생 정보를 가리지 못한 채 보내지 않기 위해서입니다).</p>
       <p class="small">이 방법으로도 해결되지 않으면 <strong>학교 관리자(없으면 배포자)에게 화면을 캡처해 문의</strong>하세요.</p>
     </div>
 
@@ -1412,7 +1477,9 @@ python -m pip install --upgrade --disable-pip-version-check --retries 5 --timeou
       <h3>Q5. 인터넷이 안 되는 곳에서도 설치할 수 있나요?</h3>
       <p>추가 기능 파일 복사와 Python 설치까지는 인터넷 없이 됩니다.
          <strong>패키지 설치 단계만</strong> 인터넷이 필요하므로, 나중에 인터넷이 되는 곳에서
-         해당 단계만 다시 실행해 마무리하면 됩니다.</p>
+         해당 단계만 다시 실행해 마무리하면 됩니다.
+         <strong>PDF 첨부의 학생 정보 가리기에 쓰는 PyMuPDF 도 이 단계에서 설치됩니다.
+         설치되지 않으면 PDF 첨부는 AI 로 보내지 않습니다.</strong></p>
 
       <h3>Q6. 예전 버전은 어디로 가나요?</h3>
       <p>지워지지 않고 <strong>자동으로 백업</strong>됩니다. 완료 화면에 백업 폴더 위치가 표시됩니다.</p>
