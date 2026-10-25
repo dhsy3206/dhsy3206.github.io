@@ -1209,7 +1209,7 @@
             display: none;
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 74%;                 /* 포스터 제목(가운데)을 가리지 않고, 자막 띠(맨 아래)와도 겹치지 않는 자리 */
             transform: translate(-50%, -50%);
             width: 4.5rem;
             height: 4.5rem;
@@ -1231,6 +1231,24 @@
 
         .gv-player.gv-ready.gv-big .gv-bigplay {
             display: flex;
+        }
+
+        .gv-load {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            background: rgba(45, 42, 41, 0.88);
+            color: #ffffff;
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        .gv-player.gv-ready.gv-loading .gv-load {
+            display: block;
         }
 
         .gv-bigplay:hover {
@@ -1316,7 +1334,7 @@
         .gv-seek::-webkit-slider-runnable-track {
             height: 5px;
             border-radius: 3px;
-            background: linear-gradient(to right, #e8826a var(--p, 0%), #6b655f var(--p, 0%));
+            background: linear-gradient(to right, #e8826a var(--p, 0%), #8a847d var(--p, 0%));
         }
 
         .gv-seek::-webkit-slider-thumb {
@@ -1332,7 +1350,7 @@
         .gv-seek::-moz-range-track {
             height: 5px;
             border-radius: 3px;
-            background: #6b655f;
+            background: #8a847d;
         }
 
         .gv-seek::-moz-range-progress {
@@ -1352,7 +1370,7 @@
         .gv-rate {
             flex: none;
             padding: 0.2rem 0.3rem;
-            border: 1px solid #5a5551;
+            border: 1px solid #8a847d;
             border-radius: 4px;
             background: #3d3936;
             color: #ffffff;
@@ -1403,6 +1421,15 @@
         }
 
         @media (pointer: coarse) {
+            .gv-btn {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+
+            .gv-seek {
+                height: 2rem;
+            }
+
             .gv-seek::-webkit-slider-thumb {
                 width: 20px;
                 height: 20px;
@@ -2419,6 +2446,7 @@
                                     이 브라우저는 영상을 재생하지 못합니다. <a href="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" target="_blank" rel="noopener">영상 파일 직접 열기</a>
                                 </video>
                                 <button type="button" class="gv-bigplay" aria-label="영상 재생"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg></button>
+                                <div class="gv-load" role="status" aria-live="polite">불러오는 중…</div>
                             </div>
                             <div class="gv-bar" role="group" aria-label="영상 조작">
                                 <button type="button" class="gv-btn gv-play" aria-label="재생">
@@ -2427,7 +2455,7 @@
                                 </button>
                                 <span class="gv-time"><span class="gv-cur">0:00</span> / <span class="gv-dur">10:25</span></span>
                                 <input type="range" class="gv-seek" min="0" max="1000" step="1" value="0" aria-label="재생 위치">
-                                <select class="gv-rate" aria-label="재생 속도">
+                                <select class="gv-rate" aria-label="재생 속도" autocomplete="off">
                                     <option value="0.75">0.75배</option>
                                     <option value="1" selected>1배</option>
                                     <option value="1.25">1.25배</option>
@@ -2952,139 +2980,194 @@
 - **[정답 풀이]:** (정답인 이유를 중학생 눈높이에 맞춰 자료와 연관 지어 논리적이고 친절하게 설명)
 - **[오답 풀이]:** (나머지 오답 선택지들이 왜 틀렸는지 각각 명확하게 설명)
     </script>
-    <!-- 7번 안내 영상 재생기: 기본 막대를 끄고 영상 '아래 바깥'에 막대를 둔다(영상에 새겨진 자막을 가리지 않게). JS 가 안 돌면 기본 막대가 그대로 남는다 -->
-    <script>
-        (function () {
-            var box = document.getElementById('eval-helper-player');
-            if (!box) { return; }
-            var v = box.querySelector('video');
-            var btnPlay = box.querySelector('.gv-play');
-            var big = box.querySelector('.gv-bigplay');
-            var btnMute = box.querySelector('.gv-mute');
-            var btnFs = box.querySelector('.gv-fsbtn');
-            var seek = box.querySelector('.gv-seek');
-            var cur = box.querySelector('.gv-cur');
-            var dur = box.querySelector('.gv-dur');
-            var rate = box.querySelector('.gv-rate');
-            if (!v || !btnPlay || !big || !btnMute || !btnFs || !seek || !cur || !dur || !rate) { return; }
+<!-- 7번 안내 영상 재생기: 기본 막대를 끄고 영상 '아래 바깥'에 막대를 둔다(영상에 새겨진 자막을 가리지 않게). JS 가 안 돌면 기본 막대가 그대로 남는다 -->
+<script>
+(function () {
+  var box = document.getElementById('eval-helper-player');
+  if (!box) { return; }
+  var v = box.querySelector('video');
+  var btnPlay = box.querySelector('.gv-play');
+  var big = box.querySelector('.gv-bigplay');
+  var btnMute = box.querySelector('.gv-mute');
+  var btnFs = box.querySelector('.gv-fsbtn');
+  var btnCc = box.querySelector('.gv-cc'); /* 선택: 자막 파일(<track>)이 있는 페이지에만 있다 */
+  var seek = box.querySelector('.gv-seek');
+  var cur = box.querySelector('.gv-cur');
+  var dur = box.querySelector('.gv-dur');
+  var rate = box.querySelector('.gv-rate');
+  if (!v || !btnPlay || !big || !btnMute || !btnFs || !seek || !cur || !dur || !rate) { return; }
+  /* 스크립트가 돌기 전에 이미 영상 오류가 났다면 기본 막대(오류 표시가 있다)를 그대로 둔다.
+     (networkState 는 보지 않는다: 소스 고르기 전에는 잠시 NO_SOURCE 라서 정상 영상도 걸린다 — 로드 실패는 아래 error 캡처가 맡는다) */
+  if (v.error) { return; }
 
-            var dragging = false;
+  var active = false;
+  var dragging = false;
+  var lastText = '';
+  var loadTimer = 0;
+  var track = (btnCc && v.textTracks && v.textTracks.length) ? v.textTracks[0] : null;
 
-            function fmt(t) {
-                t = Math.max(0, Math.floor(t || 0));
-                var s = t % 60;
-                return Math.floor(t / 60) + ':' + (s < 10 ? '0' : '') + s;
-            }
-            function spoken(t) {
-                t = Math.max(0, Math.floor(t || 0));
-                return Math.floor(t / 60) + '분 ' + (t % 60) + '초';
-            }
-            function fsElement() {
-                return document.fullscreenElement || document.webkitFullscreenElement || null;
-            }
-            function render() {
-                var d = v.duration;
-                var known = isFinite(d) && d > 0;
-                var playing = !v.paused && !v.ended;
-                box.classList.toggle('gv-playing', playing);
-                box.classList.toggle('gv-big', !playing && (v.ended || v.currentTime < 0.5));
-                btnPlay.setAttribute('aria-label', playing ? '일시정지' : '재생');
-                cur.textContent = fmt(v.currentTime);
-                if (known) {
-                    dur.textContent = fmt(d);
-                    if (!dragging) { seek.value = Math.round(v.currentTime / d * 1000); }
-                }
-                seek.style.setProperty('--p', (seek.value / 10) + '%');
-                seek.setAttribute('aria-valuetext', spoken(v.currentTime) + ' / ' + (known ? spoken(d) : '알 수 없음'));
-                var muted = v.muted || v.volume === 0;
-                box.classList.toggle('gv-muted', muted);
-                btnMute.setAttribute('aria-label', muted ? '소리 켜기' : '소리 끄기');
-            }
-            function toggle() {
-                if (v.paused || v.ended) {
-                    var p = v.play();
-                    if (p && p.catch) { p.catch(function () {}); }
-                } else {
-                    v.pause();
-                }
-            }
-            function skip(sec) {
-                var d = v.duration;
-                v.currentTime = Math.min(isFinite(d) ? d : Infinity, Math.max(0, v.currentTime + sec));
-            }
-            function toggleFs() {
-                if (fsElement()) {
-                    var exit = document.exitFullscreen || document.webkitExitFullscreen;
-                    if (exit) { exit.call(document); }
-                    return;
-                }
-                var req = box.requestFullscreen || box.webkitRequestFullscreen;
-                if (req) {
-                    var p = req.call(box);
-                    if (p && p.catch) { p.catch(function () {}); }
-                } else if (v.webkitEnterFullscreen) {
-                    v.webkitEnterFullscreen(); /* 아이폰: 영상만 전체 화면이 되며 그 기기의 기본 막대가 쓰인다 */
-                }
-            }
-            function onFsChange() {
-                var on = fsElement() === box;
-                box.classList.toggle('gv-fs', on);
-                btnFs.setAttribute('aria-label', on ? '전체 화면 닫기' : '전체 화면');
-            }
+  function fmt(t) {
+    t = Math.max(0, Math.floor(t || 0));
+    var s = t % 60;
+    return Math.floor(t / 60) + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function spoken(t) {
+    t = Math.max(0, Math.floor(t || 0));
+    return Math.floor(t / 60) + '분 ' + (t % 60) + '초';
+  }
+  function fsElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+  function renderCc() {
+    if (!btnCc) { return; }
+    var on = !!track && track.mode === 'showing';
+    btnCc.classList.toggle('gv-on', on);
+    btnCc.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btnCc.setAttribute('aria-label', on ? '자막 끄기' : '자막 켜기');
+  }
+  function render() {
+    var d = v.duration;
+    var known = isFinite(d) && d > 0;
+    var playing = !v.paused && !v.ended;
+    box.classList.toggle('gv-playing', playing);
+    box.classList.toggle('gv-big', !playing && (v.ended || v.currentTime < 0.5));
+    btnPlay.setAttribute('aria-label', playing ? '일시정지' : '재생');
+    cur.textContent = fmt(v.currentTime);
+    if (known) {
+      dur.textContent = fmt(d);
+      if (!dragging) { seek.value = Math.round(v.currentTime / d * 1000); }
+    }
+    seek.style.setProperty('--p', (seek.value / 10) + '%');
+    var text = spoken(v.currentTime) + ' / ' + (known ? spoken(d) : '알 수 없음');
+    if (text !== lastText) { /* 낭독기가 같은 값을 되풀이해 읽지 않게, 바뀔 때만 쓴다 */
+      lastText = text;
+      seek.setAttribute('aria-valuetext', text);
+    }
+    var muted = v.muted || v.volume === 0;
+    box.classList.toggle('gv-muted', muted);
+    btnMute.setAttribute('aria-label', muted ? '소리 켜기' : '소리 끄기');
+  }
+  /* 느린 망에서 먹통처럼 보이지 않게: 350ms 넘게 멈추면 '불러오는 중'을 보인다 */
+  function loading(on) {
+    clearTimeout(loadTimer);
+    if (on) { loadTimer = setTimeout(function () { box.classList.add('gv-loading'); }, 350); }
+    else { box.classList.remove('gv-loading'); }
+  }
+  /* 준비에 실패하거나 영상을 못 불러오면 기본 막대로 되돌린다(이후 우리 쪽 핸들러는 모두 물러난다) */
+  function revert() {
+    active = false;
+    clearTimeout(loadTimer);
+    v.controls = true;
+    box.classList.remove('gv-ready', 'gv-loading');
+  }
+  function toggle() {
+    if (!active) { return; }
+    if (v.paused || v.ended) {
+      var p = v.play();
+      if (p && p.catch) { p.catch(function () {}); }
+    } else {
+      v.pause();
+    }
+  }
+  function skip(sec) {
+    if (!active) { return; }
+    var d = v.duration;
+    v.currentTime = Math.min(isFinite(d) ? d : Infinity, Math.max(0, v.currentTime + sec));
+  }
+  function toggleCc() {
+    if (!active || !track) { return; }
+    track.mode = track.mode === 'showing' ? 'hidden' : 'showing';
+    renderCc();
+  }
+  function toggleFs() {
+    if (!active) { return; }
+    if (fsElement()) {
+      var exit = document.exitFullscreen || document.webkitExitFullscreen;
+      if (exit) { exit.call(document); }
+      return;
+    }
+    var req = box.requestFullscreen || box.webkitRequestFullscreen;
+    if (req) {
+      var p = req.call(box);
+      if (p && p.catch) { p.catch(function () {}); }
+    } else if (v.webkitEnterFullscreen) {
+      v.webkitEnterFullscreen(); /* 아이폰: 영상만 전체 화면이 되며 그 기기의 기본 막대가 쓰인다 */
+    }
+  }
+  function onFsChange() {
+    var on = fsElement() === box;
+    box.classList.toggle('gv-fs', on);
+    btnFs.setAttribute('aria-label', on ? '전체 화면 닫기' : '전체 화면');
+  }
 
-            try {
-                v.controls = false;
-                v.removeAttribute('controls');
-                v.setAttribute('tabindex', '0');
+  try {
+    v.controls = false;
+    v.removeAttribute('controls');
+    v.setAttribute('tabindex', '0');
+    rate.value = String(v.playbackRate);
 
-                ['play', 'pause', 'ended', 'timeupdate', 'loadedmetadata', 'durationchange', 'volumechange', 'seeked', 'emptied']
-                    .forEach(function (n) { v.addEventListener(n, render); });
-                v.addEventListener('ratechange', function () { rate.value = String(v.playbackRate); });
+    ['play', 'pause', 'ended', 'timeupdate', 'loadedmetadata', 'durationchange', 'volumechange', 'seeked', 'emptied']
+      .forEach(function (n) { v.addEventListener(n, render); });
+    v.addEventListener('ratechange', function () { rate.value = String(v.playbackRate); });
+    ['waiting', 'seeking'].forEach(function (n) { v.addEventListener(n, function () { loading(true); }); });
+    ['playing', 'canplay', 'seeked', 'pause', 'ended', 'emptied']
+      .forEach(function (n) { v.addEventListener(n, function () { loading(false); }); });
+    /* <source> 의 error 는 video 로 올라오지 않으므로 캡처 단계에서 받는다 */
+    v.addEventListener('error', revert, true);
 
-                v.addEventListener('click', toggle);
-                big.addEventListener('click', function () { toggle(); v.focus(); });
-                btnPlay.addEventListener('click', toggle);
-                btnMute.addEventListener('click', function () { v.muted = !v.muted; });
-                rate.addEventListener('change', function () { v.playbackRate = parseFloat(rate.value) || 1; });
-                btnFs.addEventListener('click', toggleFs);
-                document.addEventListener('fullscreenchange', onFsChange);
-                document.addEventListener('webkitfullscreenchange', onFsChange);
+    v.addEventListener('click', toggle);
+    v.addEventListener('dblclick', toggleFs); /* 두 번 누르면 재생↔정지가 상쇄되고 전체 화면만 바뀐다 */
+    big.addEventListener('click', function () { toggle(); v.focus(); });
+    btnPlay.addEventListener('click', toggle);
+    btnMute.addEventListener('click', function () { v.muted = !v.muted; });
+    rate.addEventListener('change', function () { v.playbackRate = parseFloat(rate.value) || 1; });
+    btnFs.addEventListener('click', function (e) {
+      toggleFs();
+      if (e.detail) { v.focus(); } /* 마우스로 눌렀을 때만: 이어서 스페이스가 전체 화면이 아니라 재생을 바꾸게 */
+    });
+    if (btnCc) { btnCc.addEventListener('click', toggleCc); }
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('webkitfullscreenchange', onFsChange);
+    if (track && v.textTracks.addEventListener) { v.textTracks.addEventListener('change', renderCc); }
 
-                seek.addEventListener('pointerdown', function () { dragging = true; });
-                document.addEventListener('pointerup', function () { dragging = false; });
-                document.addEventListener('pointercancel', function () { dragging = false; });
-                seek.addEventListener('input', function () {
-                    var d = v.duration;
-                    if (!(isFinite(d) && d > 0)) { return; }
-                    v.currentTime = seek.value / 1000 * d;
-                    render();
-                });
-                seek.addEventListener('keydown', function (e) {
-                    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); skip(-5); }
-                    else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); skip(5); }
-                });
+    seek.addEventListener('pointerdown', function (e) { if (e.button === 0) { dragging = true; } });
+    document.addEventListener('pointerup', function () { dragging = false; });
+    document.addEventListener('pointercancel', function () { dragging = false; });
+    seek.addEventListener('input', function () {
+      var d = v.duration;
+      if (!active || !(isFinite(d) && d > 0)) { return; }
+      v.currentTime = seek.value / 1000 * d;
+      render();
+    });
+    seek.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); skip(-5); }
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); skip(5); }
+    });
 
-                v.addEventListener('keydown', function (e) {
-                    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
-                    var k = e.key;
-                    if (k === ' ' || k === 'k' || k === 'K') { e.preventDefault(); toggle(); }
-                    else if (k === 'ArrowLeft') { e.preventDefault(); skip(-5); }
-                    else if (k === 'ArrowRight') { e.preventDefault(); skip(5); }
-                    else if (k === 'm' || k === 'M') { e.preventDefault(); v.muted = !v.muted; }
-                    else if (k === 'f' || k === 'F') { e.preventDefault(); toggleFs(); }
-                });
+    v.addEventListener('keydown', function (e) {
+      if (!active || e.altKey || e.ctrlKey || e.metaKey) { return; }
+      var k = e.key;
+      if (k === ' ' || k === 'k' || k === 'K') { e.preventDefault(); toggle(); }
+      else if (k === 'ArrowLeft') { e.preventDefault(); skip(-5); }
+      else if (k === 'ArrowRight') { e.preventDefault(); skip(5); }
+      else if (k === 'm' || k === 'M') { e.preventDefault(); v.muted = !v.muted; }
+      else if ((k === 'c' || k === 'C') && track) { e.preventDefault(); toggleCc(); }
+      else if (k === 'f' || k === 'F') { e.preventDefault(); toggleFs(); }
+    });
 
-                if (!(box.requestFullscreen || box.webkitRequestFullscreen || v.webkitEnterFullscreen)) {
-                    btnFs.style.display = 'none';
-                }
-                box.classList.add('gv-ready');
-                render();
-            } catch (err) {
-                /* 어떤 이유로든 준비에 실패하면 기본 막대로 되돌린다 */
-                v.controls = true;
-                box.classList.remove('gv-ready');
-            }
-        })();
-    </script>
+    if (btnCc && !track) { btnCc.style.display = 'none'; }
+    if (!(box.requestFullscreen || box.webkitRequestFullscreen || v.webkitEnterFullscreen)) {
+      btnFs.style.display = 'none';
+    }
+    active = true;
+    box.classList.add('gv-ready');
+    renderCc();
+    render();
+  } catch (err) {
+    revert();
+    if (window.console && console.error) { console.error(err); }
+  }
+})();
+</script>
 </body>
 </html>
