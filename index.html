@@ -1167,16 +1167,6 @@
             margin-bottom: 1.1rem;
         }
 
-        .guide-video video {
-            display: block;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            margin: 0;
-            background: #000;
-            border: 1px solid var(--panel-border);
-            border-radius: 8px;
-        }
-
         .guide-video-note {
             margin: 0.8rem 0 0;
             font-size: 0.85rem;
@@ -1189,7 +1179,243 @@
             font-weight: 700;
         }
 
-        /* 휴대폰: 바깥 장부 여백을 줄이고 영상은 카드 가장자리까지 넓혀 자막(영상에 새겨짐)이 한 뼘이라도 크게 보이게 한다 */
+        /* 재생기: 자막이 영상 하단에 새겨져 있으므로, 조작 막대는 영상 위에 덮지 않고 '아래 바깥'에 둔다.
+           (브라우저 기본 막대는 영상 하단에 어두운 그림자를 깔아 자막을 가린다 — JS 가 돌면 끄고 이 막대를 쓴다) */
+        .gv-player {
+            position: relative;
+            background: #000;
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gv-stage {
+            position: relative;
+        }
+
+        .gv-player video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .gv-player video:focus-visible {
+            outline: 3px solid #e8826a;
+            outline-offset: -3px;
+        }
+
+        .gv-bigplay {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4.5rem;
+            height: 4.5rem;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(45, 42, 41, 0.85);
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .gv-bigplay svg {
+            width: 2.4rem;
+            height: 2.4rem;
+            fill: currentColor;
+        }
+
+        .gv-player.gv-ready.gv-big .gv-bigplay {
+            display: flex;
+        }
+
+        .gv-bigplay:hover {
+            background: rgba(184, 74, 49, 0.95);
+        }
+
+        .gv-bigplay:focus-visible,
+        .gv-btn:focus-visible,
+        .gv-seek:focus-visible,
+        .gv-rate:focus-visible {
+            outline: 2px solid #e8826a;
+            outline-offset: 2px;
+        }
+
+        .gv-bar {
+            display: none;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.7rem;
+            background: #2d2a29;
+            color: #ffffff;
+            font-family: var(--font-main);
+        }
+
+        .gv-player.gv-ready .gv-bar {
+            display: flex;
+        }
+
+        .gv-btn {
+            flex: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.3rem;
+            height: 2.3rem;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .gv-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .gv-btn svg {
+            width: 1.35rem;
+            height: 1.35rem;
+            fill: currentColor;
+        }
+
+        .gv-player.gv-playing .gv-ico-play,
+        .gv-player:not(.gv-playing) .gv-ico-pause,
+        .gv-player.gv-muted .gv-ico-vol,
+        .gv-player:not(.gv-muted) .gv-ico-mute,
+        .gv-player.gv-fs .gv-ico-fs-in,
+        .gv-player:not(.gv-fs) .gv-ico-fs-out {
+            display: none;
+        }
+
+        .gv-time {
+            flex: none;
+            font-size: 0.82rem;
+            color: #f1ebe4;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .gv-seek {
+            flex: 1;
+            min-width: 0;
+            height: 1.6rem;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .gv-seek::-webkit-slider-runnable-track {
+            height: 5px;
+            border-radius: 3px;
+            background: linear-gradient(to right, #e8826a var(--p, 0%), #6b655f var(--p, 0%));
+        }
+
+        .gv-seek::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            margin-top: -4.5px;
+            border: 0;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .gv-seek::-moz-range-track {
+            height: 5px;
+            border-radius: 3px;
+            background: #6b655f;
+        }
+
+        .gv-seek::-moz-range-progress {
+            height: 5px;
+            border-radius: 3px;
+            background: #e8826a;
+        }
+
+        .gv-seek::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border: 0;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .gv-rate {
+            flex: none;
+            padding: 0.2rem 0.3rem;
+            border: 1px solid #5a5551;
+            border-radius: 4px;
+            background: #3d3936;
+            color: #ffffff;
+            font-size: 0.8rem;
+        }
+
+        /* 전체 화면: 영상은 남는 칸에 맞추고 막대는 그 아래에 그대로 붙는다 */
+        .gv-player:fullscreen {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .gv-player:-webkit-full-screen {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .gv-player:fullscreen .gv-stage {
+            flex: 1;
+            min-height: 0;
+        }
+
+        .gv-player:-webkit-full-screen .gv-stage {
+            flex: 1;
+            min-height: 0;
+        }
+
+        .gv-player:fullscreen video {
+            height: 100%;
+            aspect-ratio: auto;
+            object-fit: contain;
+        }
+
+        .gv-player:-webkit-full-screen video {
+            height: 100%;
+            aspect-ratio: auto;
+            object-fit: contain;
+        }
+
+        @media (pointer: coarse) {
+            .gv-seek::-webkit-slider-thumb {
+                width: 20px;
+                height: 20px;
+                margin-top: -7.5px;
+            }
+
+            .gv-seek::-moz-range-thumb {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* 휴대폰: 바깥 장부 여백을 줄이고 재생기를 카드 가장자리까지 넓혀 자막이 한 뼘이라도 크게 보이게 한다 */
         @media (max-width: 576px) {
             #video-guide .install-ledger {
                 padding: 1rem;
@@ -1203,11 +1429,23 @@
                 font-size: 1.12rem;
             }
 
-            .guide-video video {
+            .gv-player {
                 width: calc(100% + 1.6rem);
                 margin-inline: -0.8rem;
                 border-radius: 0;
                 border-inline: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gv-bar {
+                gap: 0.25rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .gv-mute,
+            .gv-rate {
+                display: none;
             }
         }
 
@@ -2174,10 +2412,37 @@
                             처음 쓰는 선생님을 위한 사용 안내입니다. 여는 법·설정 키·설정 폴더 준비부터 학생 과제 초벌 채점과 결과 엑셀 확인,
                             평가문항 설계와 시험지 만들기까지 순서대로 보여 드립니다.
                         </p>
-                        <video controls preload="metadata" playsinline poster="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" aria-label="올인원 교사도우미 - DRM평가업무도우미 안내 영상 (약 10분, 한국어 자막 포함)">
-                            <source src="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" type="video/mp4">
-                            이 브라우저는 영상을 재생하지 못합니다. <a href="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" target="_blank" rel="noopener">영상 파일 직접 열기</a>
-                        </video>
+                        <div class="gv-player gv-big" id="eval-helper-player">
+                            <div class="gv-stage">
+                                <video controls preload="metadata" playsinline poster="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" aria-label="올인원 교사도우미 - DRM평가업무도우미 안내 영상 (약 10분, 한국어 자막 포함)">
+                                    <source src="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" type="video/mp4">
+                                    이 브라우저는 영상을 재생하지 못합니다. <a href="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" target="_blank" rel="noopener">영상 파일 직접 열기</a>
+                                </video>
+                                <button type="button" class="gv-bigplay" aria-label="영상 재생"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg></button>
+                            </div>
+                            <div class="gv-bar" role="group" aria-label="영상 조작">
+                                <button type="button" class="gv-btn gv-play" aria-label="재생">
+                                    <svg class="gv-ico-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg class="gv-ico-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                                </button>
+                                <span class="gv-time"><span class="gv-cur">0:00</span> / <span class="gv-dur">10:25</span></span>
+                                <input type="range" class="gv-seek" min="0" max="1000" step="1" value="0" aria-label="재생 위치">
+                                <select class="gv-rate" aria-label="재생 속도">
+                                    <option value="0.75">0.75배</option>
+                                    <option value="1" selected>1배</option>
+                                    <option value="1.25">1.25배</option>
+                                    <option value="1.5">1.5배</option>
+                                </select>
+                                <button type="button" class="gv-btn gv-mute" aria-label="소리 끄기">
+                                    <svg class="gv-ico-vol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+                                    <svg class="gv-ico-mute" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.5 12A4.5 4.5 0 0 0 14 8v2.2l2.5 2.5V12zM19 12a6.9 6.9 0 0 1-.9 3.4l1.5 1.5A8.9 8.9 0 0 0 21 12a9 9 0 0 0-7-8.8v2.1A7 7 0 0 1 19 12zM4.3 3L3 4.3 7.7 9H3v6h4l5 5v-6.7l4.3 4.3a7 7 0 0 1-2.3 1.2v2.1a9 9 0 0 0 3.6-1.8l2.1 2.1 1.3-1.3L4.3 3zM12 4L9.900 6.100 12 8.200V4z"/></svg>
+                                </button>
+                                <button type="button" class="gv-btn gv-fsbtn" aria-label="전체 화면">
+                                    <svg class="gv-ico-fs-in" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h5v2H7v3H5V5zm9 0h5v5h-2V7h-3V5zM5 14h2v3h3v2H5v-5zm12 0h2v5h-5v-2h3v-3z"/></svg>
+                                    <svg class="gv-ico-fs-out" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5h2v4H5V7h2V5zm8 0h2v2h2v2h-4V5zM5 15h4v4H7v-2H5v-2zm10 0h4v2h-2v2h-2v-4z"/></svg>
+                                </button>
+                            </div>
+                        </div>
                         <p class="guide-video-note">
                             소리를 켜 주세요. 자막이 영상에 함께 나오며, 휴대폰에서는 가로 전체 화면으로 보시면 자막이 더 잘 보입니다.
                             영상 속 학생 이름과 점수는 가상의 예시이며, 앱의 판이 올라가면 화면이 영상과 조금 다를 수 있습니다.
@@ -2686,6 +2951,140 @@
 **설명:**
 - **[정답 풀이]:** (정답인 이유를 중학생 눈높이에 맞춰 자료와 연관 지어 논리적이고 친절하게 설명)
 - **[오답 풀이]:** (나머지 오답 선택지들이 왜 틀렸는지 각각 명확하게 설명)
+    </script>
+    <!-- 7번 안내 영상 재생기: 기본 막대를 끄고 영상 '아래 바깥'에 막대를 둔다(영상에 새겨진 자막을 가리지 않게). JS 가 안 돌면 기본 막대가 그대로 남는다 -->
+    <script>
+        (function () {
+            var box = document.getElementById('eval-helper-player');
+            if (!box) { return; }
+            var v = box.querySelector('video');
+            var btnPlay = box.querySelector('.gv-play');
+            var big = box.querySelector('.gv-bigplay');
+            var btnMute = box.querySelector('.gv-mute');
+            var btnFs = box.querySelector('.gv-fsbtn');
+            var seek = box.querySelector('.gv-seek');
+            var cur = box.querySelector('.gv-cur');
+            var dur = box.querySelector('.gv-dur');
+            var rate = box.querySelector('.gv-rate');
+            if (!v || !btnPlay || !big || !btnMute || !btnFs || !seek || !cur || !dur || !rate) { return; }
+
+            var dragging = false;
+
+            function fmt(t) {
+                t = Math.max(0, Math.floor(t || 0));
+                var s = t % 60;
+                return Math.floor(t / 60) + ':' + (s < 10 ? '0' : '') + s;
+            }
+            function spoken(t) {
+                t = Math.max(0, Math.floor(t || 0));
+                return Math.floor(t / 60) + '분 ' + (t % 60) + '초';
+            }
+            function fsElement() {
+                return document.fullscreenElement || document.webkitFullscreenElement || null;
+            }
+            function render() {
+                var d = v.duration;
+                var known = isFinite(d) && d > 0;
+                var playing = !v.paused && !v.ended;
+                box.classList.toggle('gv-playing', playing);
+                box.classList.toggle('gv-big', !playing && (v.ended || v.currentTime < 0.5));
+                btnPlay.setAttribute('aria-label', playing ? '일시정지' : '재생');
+                cur.textContent = fmt(v.currentTime);
+                if (known) {
+                    dur.textContent = fmt(d);
+                    if (!dragging) { seek.value = Math.round(v.currentTime / d * 1000); }
+                }
+                seek.style.setProperty('--p', (seek.value / 10) + '%');
+                seek.setAttribute('aria-valuetext', spoken(v.currentTime) + ' / ' + (known ? spoken(d) : '알 수 없음'));
+                var muted = v.muted || v.volume === 0;
+                box.classList.toggle('gv-muted', muted);
+                btnMute.setAttribute('aria-label', muted ? '소리 켜기' : '소리 끄기');
+            }
+            function toggle() {
+                if (v.paused || v.ended) {
+                    var p = v.play();
+                    if (p && p.catch) { p.catch(function () {}); }
+                } else {
+                    v.pause();
+                }
+            }
+            function skip(sec) {
+                var d = v.duration;
+                v.currentTime = Math.min(isFinite(d) ? d : Infinity, Math.max(0, v.currentTime + sec));
+            }
+            function toggleFs() {
+                if (fsElement()) {
+                    var exit = document.exitFullscreen || document.webkitExitFullscreen;
+                    if (exit) { exit.call(document); }
+                    return;
+                }
+                var req = box.requestFullscreen || box.webkitRequestFullscreen;
+                if (req) {
+                    var p = req.call(box);
+                    if (p && p.catch) { p.catch(function () {}); }
+                } else if (v.webkitEnterFullscreen) {
+                    v.webkitEnterFullscreen(); /* 아이폰: 영상만 전체 화면이 되며 그 기기의 기본 막대가 쓰인다 */
+                }
+            }
+            function onFsChange() {
+                var on = fsElement() === box;
+                box.classList.toggle('gv-fs', on);
+                btnFs.setAttribute('aria-label', on ? '전체 화면 닫기' : '전체 화면');
+            }
+
+            try {
+                v.controls = false;
+                v.removeAttribute('controls');
+                v.setAttribute('tabindex', '0');
+
+                ['play', 'pause', 'ended', 'timeupdate', 'loadedmetadata', 'durationchange', 'volumechange', 'seeked', 'emptied']
+                    .forEach(function (n) { v.addEventListener(n, render); });
+                v.addEventListener('ratechange', function () { rate.value = String(v.playbackRate); });
+
+                v.addEventListener('click', toggle);
+                big.addEventListener('click', function () { toggle(); v.focus(); });
+                btnPlay.addEventListener('click', toggle);
+                btnMute.addEventListener('click', function () { v.muted = !v.muted; });
+                rate.addEventListener('change', function () { v.playbackRate = parseFloat(rate.value) || 1; });
+                btnFs.addEventListener('click', toggleFs);
+                document.addEventListener('fullscreenchange', onFsChange);
+                document.addEventListener('webkitfullscreenchange', onFsChange);
+
+                seek.addEventListener('pointerdown', function () { dragging = true; });
+                document.addEventListener('pointerup', function () { dragging = false; });
+                document.addEventListener('pointercancel', function () { dragging = false; });
+                seek.addEventListener('input', function () {
+                    var d = v.duration;
+                    if (!(isFinite(d) && d > 0)) { return; }
+                    v.currentTime = seek.value / 1000 * d;
+                    render();
+                });
+                seek.addEventListener('keydown', function (e) {
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); skip(-5); }
+                    else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); skip(5); }
+                });
+
+                v.addEventListener('keydown', function (e) {
+                    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
+                    var k = e.key;
+                    if (k === ' ' || k === 'k' || k === 'K') { e.preventDefault(); toggle(); }
+                    else if (k === 'ArrowLeft') { e.preventDefault(); skip(-5); }
+                    else if (k === 'ArrowRight') { e.preventDefault(); skip(5); }
+                    else if (k === 'm' || k === 'M') { e.preventDefault(); v.muted = !v.muted; }
+                    else if (k === 'f' || k === 'F') { e.preventDefault(); toggleFs(); }
+                });
+
+                if (!(box.requestFullscreen || box.webkitRequestFullscreen || v.webkitEnterFullscreen)) {
+                    btnFs.style.display = 'none';
+                }
+                box.classList.add('gv-ready');
+                render();
+            } catch (err) {
+                /* 어떤 이유로든 준비에 실패하면 기본 막대로 되돌린다 */
+                v.controls = true;
+                box.classList.remove('gv-ready');
+            }
+        })();
     </script>
 </body>
 </html>
