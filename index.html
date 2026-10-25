@@ -1142,6 +1142,75 @@
             }
         }
 
+        /* 7번: 올인원 교사도우미 - DRM평가업무도우미 안내 영상 (이 페이지 안에서 바로 재생) */
+        .guide-video {
+            margin-top: 0.5rem;
+            background: #fffdf8;
+            border: 1px solid #ecdcce;
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 10px;
+            padding: 1.5rem;
+            word-break: keep-all;        /* 한글 어절 중간에서 끊기지 않게 */
+            overflow-wrap: anywhere;     /* 아주 좁은 화면의 긴 낱말만 예외적으로 끊는다 */
+        }
+
+        .guide-video h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.6rem;
+            line-height: 1.5;
+        }
+
+        .guide-video .install-summary {
+            margin-bottom: 1.1rem;
+        }
+
+        .guide-video video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin: 0;
+            background: #000;
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+        }
+
+        .guide-video-note {
+            margin: 0.8rem 0 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .guide-video-note a {
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+
+        /* 휴대폰: 바깥 장부 여백을 줄이고 영상은 카드 가장자리까지 넓혀 자막(영상에 새겨짐)이 한 뼘이라도 크게 보이게 한다 */
+        @media (max-width: 576px) {
+            #video-guide .install-ledger {
+                padding: 1rem;
+            }
+
+            .guide-video {
+                padding: 1.1rem 0.8rem;
+            }
+
+            .guide-video h3 {
+                font-size: 1.12rem;
+            }
+
+            .guide-video video {
+                width: calc(100% + 1.6rem);
+                margin-inline: -0.8rem;
+                border-radius: 0;
+                border-inline: 0;
+            }
+        }
+
         /* 맺음말 및 행동촉구 */
         .cta-section {
             text-align: center;
@@ -2070,6 +2139,7 @@
                     <div class="install-kicker">DRM AI 및 올인원 안내 영상 목록</div>
                     <p class="install-summary">
                         엑셀 DRM AI · 올인원 도우미 · 구글용 DRM AI를 한 번에 살펴보는 전체 합본 영상부터, 학생부 검토와 구글 메일 자동 발송을 위한 API 설정까지 핵심적인 업무 활용법을 순서대로 안내합니다.
+                        목록 아래에서는 올인원 교사도우미의 DRM평가업무도우미 안내 영상을 이 페이지에서 바로 재생할 수 있습니다.
                     </p>
 
                     <div class="install-doc-menu" style="grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 2rem;">
@@ -2094,6 +2164,25 @@
                             <strong>5. 교사 올인원 도우미 구글 메일(Gmail) 자동 연결 설정 완벽 가이드</strong>
                             <span>영상 길이: 6분 | 자동 이메일 발송 기능을 사용하기 위한 구글 API 설정 및 연동법 해설</span>
                         </a>
+                    </div>
+
+                    <!-- 올인원 교사도우미 - DRM평가업무도우미 안내 영상 (바로 재생) -->
+                    <div class="guide-video" id="eval-helper-video" role="region" aria-labelledby="eval-helper-video-title">
+                        <div class="install-kicker">바로 보기 · 약 10분</div>
+                        <h3 id="eval-helper-video-title">올인원 교사도우미 - DRM평가업무도우미 안내 영상</h3>
+                        <p class="install-summary">
+                            처음 쓰는 선생님을 위한 사용 안내입니다. 여는 법·설정 키·설정 폴더 준비부터 학생 과제 초벌 채점과 결과 엑셀 확인,
+                            평가문항 설계와 시험지 만들기까지 순서대로 보여 드립니다.
+                        </p>
+                        <video controls preload="metadata" playsinline poster="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" aria-label="올인원 교사도우미 - DRM평가업무도우미 안내 영상 (약 10분, 한국어 자막 포함)">
+                            <source src="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" type="video/mp4">
+                            이 브라우저는 영상을 재생하지 못합니다. <a href="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" target="_blank" rel="noopener">영상 파일 직접 열기</a>
+                        </video>
+                        <p class="guide-video-note">
+                            소리를 켜 주세요. 자막이 영상에 함께 나오며, 휴대폰에서는 가로 전체 화면으로 보시면 자막이 더 잘 보입니다.
+                            영상 속 학생 이름과 점수는 가상의 예시이며, 앱의 판이 올라가면 화면이 영상과 조금 다를 수 있습니다.
+                            재생이 되지 않으면 <a href="%EC%95%88%EB%82%B4%EC%98%81%EC%83%81/DRM%ED%8F%89%EA%B0%80%EC%97%85%EB%AC%B4%EB%8F%84%EC%9A%B0%EB%AF%B8_%EC%82%AC%EC%9A%A9_%EC%95%88%EB%82%B4_%EC%9E%90%EB%A7%89%ED%8F%AC%ED%95%A8.mp4" target="_blank" rel="noopener">새 창에서 영상 열기</a>를 눌러 주세요.
+                        </p>
                     </div>
 
                     <!-- 맺음말 및 행동촉구 -->
