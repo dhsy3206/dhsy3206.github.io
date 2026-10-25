@@ -484,6 +484,50 @@
             font-weight: 700;
         }
 
+        /* 규칙 1: 날짜별 '블록' 구분선 · 이어짐 표시 · 예시 아래 설명 */
+        .fake-excel tr.block-start td {
+            border-top: 2px solid #9fae88;
+        }
+
+        .fake-excel th.more,
+        .fake-excel td.more {
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .pane-note {
+            margin-top: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            word-break: keep-all;        /* 한글 어절 중간에서 끊기지 않게 */
+            overflow-wrap: break-word;
+        }
+
+        .pane-note + .pane-note {
+            margin-top: 0.5rem;
+        }
+
+        .pane-note strong {
+            color: var(--text-primary);
+        }
+
+        /* 우상단 '나쁜/올바른 예시' 표지와 설명문이 겹치지 않게 자리를 비워 둔다 */
+        .comp-pane .pane-desc {
+            padding-right: 5.5rem;
+        }
+
+        /* 좁은 폭(휴대폰, 2단 직후)에서 '김민수'·'출결'이 중간에 끊기지 않게 규칙 1 표만 촘촘히 */
+        @media (max-width: 480px), (min-width: 769px) and (max-width: 1080px) {
+            .fake-excel.compact th,
+            .fake-excel.compact td {
+                padding-left: 0.3rem;
+                padding-right: 0.3rem;
+                font-size: 0.72rem;
+            }
+        }
+
         /* ==========================================
            🖥️ 인터랙티브 병렬처리 시뮬레이터 (칠판 & 원고지 컨셉)
            ========================================== */
@@ -1662,14 +1706,14 @@
                         <div class="comparison-body">
                             <div class="comp-pane bad">
                                 <span class="pane-tag">나쁜 예시</span>
-                                <p class="pane-desc">가로로 날짜나 항목을 계속 나열하는 형식</p>
-                                <table class="fake-excel">
+                                <p class="pane-desc">같은 종류의 기록이 날짜마다 열로 펼쳐지는 형식</p>
+                                <table class="fake-excel compact">
                                     <thead>
                                         <tr>
                                             <th>이름</th>
-                                            <th>3/1 출결</th>
-                                            <th>3/2 출결</th>
-                                            <th>3/3 출결</th>
+                                            <th>3/1</th>
+                                            <th>3/2</th>
+                                            <th class="more">…</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1677,20 +1721,39 @@
                                             <td>김민수</td>
                                             <td>출석</td>
                                             <td>출석</td>
+                                            <td class="more">…</td>
+                                        </tr>
+                                        <tr>
+                                            <td>이지원</td>
+                                            <td>출석</td>
+                                            <td>지각</td>
+                                            <td class="more">…</td>
+                                        </tr>
+                                        <tr>
+                                            <td>박준서</td>
                                             <td>결석</td>
+                                            <td>출석</td>
+                                            <td class="more">…</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <p class="pane-note">
+                                    <strong>하루가 지날 때마다 열이 옆으로 한 칸씩 늘어납니다.</strong>
+                                    한 학기만 지나도 열이 100개 안팎(1년이면 200개 가까이)이 됩니다.
+                                    학생 한 줄이 문제가 아니라, 날짜가 '열 이름'이 되어 같은 종류의 값(출결)이 여러 열에 흩어진 것이 문제입니다.
+                                    그래서 '지각만 모아 보기'는 필터가 열 하나씩만 걸려 한 번에 되지 않고,
+                                    피벗표로도 날짜를 월별로 묶을 수 없으며, '월별 결석 수'는 월마다 열 범위를 새로 잡아 수식을 만들어야 합니다.
+                                </p>
                             </div>
                             <div class="comp-pane good">
                                 <span class="pane-tag">올바른 예시</span>
-                                <p class="pane-desc">세로 방향으로 새로운 날짜와 기록을 행으로 추가</p>
-                                <table class="fake-excel">
+                                <p class="pane-desc">한 줄에 한 기록, 새 날짜는 아래로 쌓기</p>
+                                <table class="fake-excel compact">
                                     <thead>
                                         <tr>
                                             <th>날짜</th>
                                             <th>이름</th>
-                                            <th>출결 상태</th>
+                                            <th>출결</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1700,17 +1763,49 @@
                                             <td class="highlight-good">출석</td>
                                         </tr>
                                         <tr>
+                                            <td>3/1</td>
+                                            <td>이지원</td>
+                                            <td class="highlight-good">출석</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3/1</td>
+                                            <td>박준서</td>
+                                            <td class="highlight-good">결석</td>
+                                        </tr>
+                                        <tr class="block-start">
                                             <td>3/2</td>
                                             <td>김민수</td>
                                             <td class="highlight-good">출석</td>
                                         </tr>
                                         <tr>
-                                            <td>3/3</td>
-                                            <td>김민수</td>
-                                            <td class="highlight-good">결석</td>
+                                            <td>3/2</td>
+                                            <td>이지원</td>
+                                            <td class="highlight-good">지각</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3/2</td>
+                                            <td>박준서</td>
+                                            <td class="highlight-good">출석</td>
+                                        </tr>
+                                        <tr class="block-start">
+                                            <td class="more">⋮</td>
+                                            <td class="more">⋮</td>
+                                            <td class="more">⋮</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <p class="pane-note">
+                                    <strong>새 날짜는 열이 아니라, 학급 학생 수만큼의 줄을 맨 아래에 덧붙입니다.</strong>
+                                    굵은 선으로 나눈 한 덩어리(하루치 학급 전체 기록)가 '블록'입니다.
+                                    반이 몇 명이든, 몇 달이 지나든 열은 3개 그대로라서 필터·정렬·피벗표를 바로 쓸 수 있고,
+                                    AI에게도 '한 줄 = 한 건의 기록'으로 읽혀 줄 단위로 처리시킬 수 있습니다.
+                                </p>
+                                <p class="pane-note">
+                                    날짜가 줄마다 반복돼도 정상이며, 병합하지 말고 모든 줄에 채웁니다(규칙 3).
+                                    ⋮ 는 '이렇게 계속 이어진다'는 표시일 뿐 입력하는 글자가 아닙니다.
+                                    가로 출석부 모양은 '보기용'이므로, 입력과 보관은 세로로 쌓고
+                                    학생별·날짜별로 모아 볼 때는 피벗표로 집계하세요(규칙 4와 같은 원리).
+                                </p>
                             </div>
                         </div>
                     </div>
