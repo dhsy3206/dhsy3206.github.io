@@ -160,10 +160,12 @@
 
     <div class="hero">
       <h1>DRM AI 설치 및 업데이트 통합 설명서</h1>
-      <p><strong>더블클릭 한 번</strong>으로 설치가 진행됩니다.
+      <p>처음 설치는 <strong>더블클릭 한 번</strong>으로 진행되며,
+         이미 사용 중인 분은 엑셀 안에서 <strong>클릭 두 번으로 끝나는 <a href="#secAutoUpdate">「자동 업데이트」</a></strong>를 쓰실 수 있습니다.
          <strong>1장부터 5장까지 순서대로</strong> 따라 하시면 처음 설치와 업데이트가 모두 끝납니다.</p>
       <div class="badge-row">
         <span class="badge">처음 설치 · 업데이트 모두 지원</span>
+        <span class="badge">엑셀 안 자동 업데이트 지원</span>
         <span class="badge">자동 설치 전용</span>
         <span class="badge">모든 배포 버전 공통 적용</span>
         <span class="badge">초보자 기준 서술</span>
@@ -228,7 +230,14 @@
             열려 있으면 파일 덮어쓰기가 실패합니다.</li>
         <li><strong>업데이트하는 분</strong>은 개인 프롬프트와 템플릿이 있다면, 업데이트 <strong>전에</strong>
             엑셀을 열어 <strong>DRM AI 메뉴 안에서, 그 기능을 쓰는 각 메뉴마다 직접 백업</strong>하세요.
-            <strong>자동으로 백업되지 않으며, 다른 프로그램이 대신해 주지도 않습니다.</strong></li>
+            <strong>자동으로 백업되지 않으며, 다른 프로그램이 대신해 주지도 않습니다.</strong>
+            <div class="note ok" style="margin:8px 0 4px">
+              <strong>잠깐! 이미 v10.7 이상을 쓰고 계신가요? — 엑셀 안 <a href="#secAutoUpdate">「자동 업데이트」(1-3)</a>를 쓰시면 따로 백업하실 필요가 없습니다.</strong><br />
+              엑셀 상단 <strong>[안내 및 설정] → <span class="mono">[업데이트 확인]</span></strong> 으로 업데이트하면
+              기존에 넣어 둔 <strong>API 키 · 기관(학교) 키 잠금 · 개인 프롬프트 · 템플릿이 100% 자동으로 보존</strong>되며,
+              엑셀도 알아서 닫혔다가 다시 켜집니다.
+              <span class="small">(위 수동 백업과 1번의 프로그램 종료는 새 압축 파일의 <span class="mono">DRM_AI_설치및업데이트.bat</span> 로 덮어써서 업데이트할 때만 해당합니다.)</span>
+            </div></li>
         <li><strong>AI 기능을 쓰시려면 두 가지가 더 필요합니다</strong> —
             <strong>① 올인원 메일 인증</strong>, <strong>② 본인 API 키 입력</strong> (<a href="#secC4">4-4</a>).
             <strong>인증키는 메일로 신청해서 받는 것이라 회신에 보통 1~2일</strong> 걸립니다.
@@ -246,7 +255,11 @@
     <div class="card">
       <h2 style="margin-top:6px">목차</h2>
       <ol class="toc">
-        <li><a href="#sec1">1. 시작하기 전 확인 (2가지)</a></li>
+        <li><a href="#sec1">1. 시작하기 전 확인 (2가지)</a>
+          <ol>
+            <li><a href="#secAutoUpdate">1-3. 엑셀 안에서 끝내는 자동 업데이트 (클릭 2번 · 설정 100% 자동 보존)</a></li>
+          </ol>
+        </li>
         <li><a href="#sec2">2. 설치 준비</a></li>
         <li><a href="#secA">3. 설치하기 — 더블클릭 한 번</a>
           <ol>
@@ -303,7 +316,12 @@
         <tr>
           <th>업데이트</th>
           <td>이미 사용 중이고 <strong>새 버전으로 교체</strong>합니다.
-              <strong>먼저 개인 프롬프트·템플릿을 백업</strong>해야 합니다.</td>
+              <strong>먼저 개인 프롬프트·템플릿을 백업</strong>해야 합니다.
+              <div class="note ok" style="margin:8px 0 0">
+                <strong>업데이트는 두 가지 방법 중 편한 것을 고르세요.</strong><br />
+                ① <strong>엑셀 안 자동 업데이트 (가장 쉬움 · 권장)</strong> — 이미 엑셀 메뉴에 <span class="mono">[업데이트 확인]</span> 단추가 있는 분(v10.7 이상)은 압축 파일이나 백업 없이 바로 <strong><a href="#secAutoUpdate">1-3) 자동 업데이트 안내</a></strong>로 가세요. 클릭 두 번이면 내 설정 그대로 1분 만에 끝납니다.<br />
+                ② <strong>배포 폴더(<span class="mono">DRM_AI_설치및업데이트.bat</span>)로 업데이트</strong> — 새 압축 파일(<span class="mono">.zip</span>)을 전달받아 폴더에서 업데이트하거나 옛 버전(v10.6 이하)을 쓰시는 분은 아래 1-2)와 <a href="#sec2">2장</a>·<a href="#secA">3장</a> 순서대로 진행하세요.
+              </div></td>
         </tr>
       </table>
 
@@ -358,6 +376,98 @@
          중간에 멈추더라도 <strong>다시 더블클릭하면 안 된 부분만 이어서</strong> 진행됩니다.
          설치가 끝나면 추가 기능은 <span class="mono">%AppData%\Microsoft\AddIns</span> 에,
          Python 파일은 <span class="mono">C:\MyTrustedFiles</span> 에 놓입니다.</p>
+    </div>
+
+    <!-- ===================== 1-3. 온라인 자동 업데이트 ===================== -->
+    <div id="secAutoUpdate" class="card auto">
+      <h2><span class="tag tag-auto">새 기능 · 가장 쉬움</span> 1-3. 엑셀 안에서 끝내는 '자동 업데이트'</h2>
+      <p>이미 DRM AI(v10.7 이상)를 설치해 쓰고 계신 선생님은 <strong>새 압축 파일(<span class="mono">.zip</span>)을 내려받거나 수동으로 백업할 필요가 없습니다.</strong>
+         엑셀 안에서 <strong>단추 두 번만 누르면</strong> 사용 중이던 <strong>API 키 · 기관(학교) 키 잠금 · 개인 프롬프트 · 템플릿이 100% 그대로 보존</strong>된 채 새 버전으로 업데이트됩니다.</p>
+
+      <div class="note ok">
+        <strong>초보 선생님이 안심하고 쓰실 수 있는 3가지 이유</strong>
+        <ul class="steps" style="margin-top:6px; margin-bottom:0">
+          <li><strong>내 설정 100% 자동 보존:</strong> 입력해 둔 API 키, 학교 기관 키 잠금, 개인 프롬프트, 템플릿을 따로 백업·복원하지 않아도 새 버전에 그대로 유지됩니다.</li>
+          <li><strong>엑셀 자동 종료 및 자동 재실행:</strong> 설치할 때 엑셀이 안전하게 닫혔다가, 업데이트가 끝나면 <strong>자동으로 다시 켜집니다.</strong>
+              <span class="small">(작성 중이던 미저장 엑셀 문서가 열려 있으면 강제로 닫지 않고 먼저 저장할지 물어보므로 안전합니다.)</span></li>
+          <li><strong>실패해도 기존 파일 안전 유지:</strong> 인터넷이 끊기거나 중간에 멈추더라도 기존 버전 파일이 지워지지 않고 그대로 유지됩니다.</li>
+        </ul>
+      </div>
+
+      <h3>어떻게 시작하나요? (자동 알림 또는 직접 클릭)</h3>
+      <table>
+        <tr><th style="width:32%">시작 방법</th><th>어떻게 열리나요?</th></tr>
+        <tr>
+          <td><strong>① 자동으로 알림 창이 뜰 때</strong><br /><span class="small">(평소처럼 엑셀만 켜면 됨)</span></td>
+          <td>엑셀을 실행한 뒤 약 15초 후(이후 4시간마다) 새 버전이 나왔는지 스스로 확인하여,
+              <strong>새 버전이 있을 때만 「DRM AI 업데이트」 안내 창을 자동으로 띄워 줍니다.</strong><br />
+              <span class="small">이미 최신 버전이거나 인터넷이 연결되지 않은 상태라면 아무 창도 뜨지 않고 조용히 넘어갑니다.</span></td>
+        </tr>
+        <tr>
+          <td><strong>② 내가 직접 확인하고 싶을 때</strong></td>
+          <td>엑셀 상단 <strong>[데이터] 탭 → [API 메뉴] 그룹 → <span class="mono">DRM AI v0.0</span> → [안내 및 설정] → <span class="mono">[업데이트 확인]</span></strong> 단추를 누릅니다.<br />
+              <span class="small">올인원 교사 도우미에서 정식 메일 인증(<a href="#secC4a">4-4-1</a>)이 완료된 PC에서 열립니다.</span></td>
+        </tr>
+      </table>
+
+      <h3>따라 하기 — 클릭 두 번이면 끝납니다 (약 1분 소요)</h3>
+      <ol class="steps">
+        <li><strong>1단계: 변경점 확인 후 <span class="mono">[새 버전 받기]</span> 누르기</strong>
+            <p class="small" style="margin-top:4px"><strong>「DRM AI 업데이트」</strong> 창에 <span class="mono">새 버전 0.0을 사용할 수 있습니다.</span> 문구와 함께
+               <strong><span class="mono">[버전 0.0 핵심 변경점]</span></strong>이 한눈에 표시됩니다.
+               창 아래의 <strong><span class="mono">[새 버전 받기]</span></strong> 단추를 누르고, 이어서 뜨는 확인 창(<span class="mono">버전 0.0 파일을 내려받으시겠습니까?</span>)에서 <strong>[예]</strong>를 누릅니다.</p></li>
+        <li><strong>2단계: <span class="mono">[업데이트 설치]</span> 누르기</strong>
+            <p class="small" style="margin-top:4px">파일 내려받기와 보안 서명 확인이 끝나면
+               <span class="mono">버전 0.0 파일을 확인했습니다. 설치 기능은 아직 실행 전입니다. [업데이트 설치]를 눌러 완료하세요.</span> 안내가 나오고
+               <strong><span class="mono">[업데이트 설치]</span></strong> 단추가 켜집니다.
+               이 단추를 누르고 확인 창(<span class="mono">지금 설치하시겠습니까?</span>)에서 <strong>[예]</strong>를 누릅니다.</p></li>
+        <li><strong>3단계: 완료 확인 후 <span class="mono">[닫기]</span> 누르기 (엑셀 자동 실행)</strong>
+            <p class="small" style="margin-top:4px">열려 있던 엑셀 창이 안전하게 닫히며 내 설정을 그대로 옮겨 업데이트를 마친 뒤,
+               <span class="mono">버전 0.0 업데이트 및 사용자 설정 보존이 완료되었습니다.</span> 안내와 함께 <strong>엑셀이 자동으로 다시 실행됩니다.</strong>
+               이제 업데이트 창의 <strong><span class="mono">[닫기]</span></strong> 단추를 누르시면 모든 과정이 끝납니다!</p></li>
+      </ol>
+
+      <div class="screen">   <span class="g">DRM AI 업데이트</span>
+   현재 버전 0.0
+
+   새 버전 0.0을 사용할 수 있습니다.
+
+   [버전 0.0 핵심 변경점]
+   - 최신 AI 모델 지원 및 기능 안정성 개선
+   - 업데이트 시 기존 API 키·기관 잠금·프롬프트·서식 시트 100% 안전 보존
+
+   [ 업데이트 확인 ]   <span class="y">[ 새 버전 받기 ]</span>  →  <span class="g">[ 업데이트 설치 ]</span>  →  [ 닫기 ]</div>
+
+      <h3>한눈에 비교: 자동 업데이트 vs 배포 폴더 설치 프로그램</h3>
+      <table>
+        <tr>
+          <th style="width:24%">구분</th>
+          <th style="width:38%"><span class="tag tag-auto">권장</span> 엑셀 안 '자동 업데이트' (1-3절)</th>
+          <th>배포 폴더 <span class="mono">DRM_AI_설치및업데이트.bat</span> (2장~3장)</th>
+        </tr>
+        <tr>
+          <td><strong>언제 쓰나요?</strong></td>
+          <td>이미 <span class="mono">[업데이트 확인]</span> 메뉴가 있는 버전(v10.7 이상)에서 새 버전으로 올릴 때</td>
+          <td>이 PC에 <strong>처음 설치</strong>할 때, 또는 옛 버전(v10.6 이하)에서 올릴 때</td>
+        </tr>
+        <tr>
+          <td><strong>준비할 파일</strong></td>
+          <td><strong>없음</strong> (엑셀 안에서 바로 진행)</td>
+          <td>전달받은 <span class="mono">DRM_AI_학교명_v0.0.zip</span> 압축 풀기</td>
+        </tr>
+        <tr>
+          <td><strong>API 키 · 프롬프트 · 템플릿</strong></td>
+          <td><strong>자동으로 100% 그대로 보존됨</strong> (따로 백업할 필요 없음)</td>
+          <td>업데이트 전 직접 백업 후 복원 필요 (<a href="#backup">2-4</a>)</td>
+        </tr>
+        <tr>
+          <td><strong>엑셀 종료 · 재실행</strong></td>
+          <td><strong>자동으로 닫혔다가 설치 후 자동으로 다시 켜짐</strong></td>
+          <td>실행 전에 직접 엑셀 · 워드 · 올인원 모두 종료</td>
+        </tr>
+      </table>
+      <p class="small" style="margin-top:8px; margin-bottom:0"><strong>자동 업데이트로 끝내신 분은 아래 2장~4장을 다시 하실 필요가 없습니다.</strong>
+         자동으로 다시 켜진 엑셀에서 바로 기능을 쓰시면 됩니다.</p>
     </div>
 
     <!-- ===================== 2. 공통 준비 ===================== -->
@@ -424,6 +534,12 @@
          화면에 창이 안 보여도 백그라운드에 남아 있을 수 있으니, 몇 초 기다린 뒤 진행하세요.</p>
 
       <h3 id="backup">2-4) 개인 프롬프트 · 템플릿 백업 (업데이트하는 분만 · 매우 중요)</h3>
+      <div class="note ok">
+        <strong>엑셀 안 <a href="#secAutoUpdate">「자동 업데이트」(1-3)</a>를 쓰시는 분은 이 백업을 건너뛰세요.</strong><br />
+        엑셀 상단 <strong>[안내 및 설정] → <span class="mono">[업데이트 확인]</span></strong> 으로 업데이트할 때는
+        기존의 개인 프롬프트 · 템플릿 · API 키 · 기관 키 잠금이 <strong>자동으로 100% 보존</strong>됩니다.
+        아래 수동 백업은 <strong>배포 폴더의 <span class="mono">DRM_AI_설치및업데이트.bat</span> 로 덮어써서 업데이트할 때만</strong> 필요합니다.
+      </div>
       <div class="note danger">
         <p style="margin-top:0"><strong>백업은 반드시 업데이트 "전"에 해야 합니다.</strong></p>
         <p>개인 프롬프트와 템플릿의 백업은
@@ -623,7 +739,8 @@
            4-3 [설명서 보기] 확인도 <strong>처음 설치하는 분만</strong> 하는 작업입니다.
            업데이트하신 분은 <strong>엑셀을 새로 실행해 DRM AI 메뉴가 보이는지</strong> 확인한 뒤
            <a href="#secC4">4-4</a> 로 가세요.
-           <strong>인증과 키를 넣는 방식이 예전과 모두 달라졌습니다.</strong></p>
+           <strong>인증과 키를 넣는 방식이 예전과 모두 달라졌습니다.</strong><br />
+           (단, <strong><a href="#secAutoUpdate">1-3) 엑셀 안 자동 업데이트</a></strong>로 올리신 분은 기존 인증과 API 키 · 기관 잠금이 그대로 보존되므로 4장 전체를 건너뛰셔도 됩니다.)</p>
       </div>
 
       <div class="note danger">
@@ -1069,7 +1186,8 @@
             <td>A: 설치만 · B: 설치 뒤 보관해 둔 파일로 <strong>7</strong></td></tr>
       </table>
       <p class="small">A 로 시작한 학교가 나중에 키를 바꾸면 그때부터 B 를 씁니다. 두 길은 겹치지 않습니다.
-         어느 경우든 <strong>올인원 인증은 선생님 각자</strong> 하셔야 AI 기능과 7 번 메뉴가 열립니다.</p>
+         어느 경우든 <strong>올인원 인증은 선생님 각자</strong> 하셔야 AI 기능과 7 번 메뉴가 열립니다.
+         (단, 엑셀 안 <strong><a href="#secAutoUpdate">자동 업데이트(1-3)</a></strong>로 올릴 때는 잠근 학교 키도 그대로 유지되므로 새 설치 파일이나 기관 키 파일을 다시 넣을 필요가 없습니다.)</p>
 
       <div class="note">
         <strong>기관 키 파일(<span class="mono">.drmkey</span>)을 받은 선생님은 이렇게 합니다 — 비밀번호 없음</strong>
@@ -1141,7 +1259,8 @@
             직접 선택해 등록</strong>했다.
             <span class="small">(업데이트는 해당 없음)</span></li>
         <li><span class="mono">C:\MyTrustedFiles</span> 폴더에 <span class="mono">.py</span> 파일들이 들어 있다.</li>
-        <li>(업데이트) 백업해 둔 개인 프롬프트·템플릿을 DRM AI 메뉴에서 <strong>기능별로 직접 복원</strong>했다.</li>
+        <li>(업데이트) 백업해 둔 개인 프롬프트·템플릿을 DRM AI 메뉴에서 <strong>기능별로 직접 복원</strong>했다.
+            <span class="small">(엑셀 안 <a href="#secAutoUpdate">자동 업데이트(1-3)</a>를 쓰신 분은 자동 보존되므로 해당 없음)</span></li>
         <li>(처음 설치) <a href="#secC2">4-2</a> 빠른 실행 도구 모음에 <span class="mono">DRM AI v0.0</span> 단추를 등록했다.</li>
         <li>(처음 설치) <a href="#secC3">4-3</a> 40번 <strong>[설명서 보기]</strong> 를 열어 남은 항목이 없는지 확인했다.</li>
         <li><strong>① 올인원 교사 도우미에서 메일 인증</strong>을 마치고 <strong>올인원을 한 번 실행</strong>했다
@@ -1158,7 +1277,8 @@
             (<a href="#secC5b">4-5-1</a>).</li>
         <li>(업데이트) <strong>[안내 및 설정] → <span class="mono">[인증 상태 확인(올인원 연동)]</span> 에서
             키가 그대로 있는지</strong> 확인했다.
-            <span class="small">업데이트는 추가 기능 파일을 새 파일로 바꾸므로 비어 있을 수 있습니다 —
+            <span class="small">엑셀 안 <strong><span class="mono">[업데이트 확인]</span> 자동 업데이트(<a href="#secAutoUpdate">1-3</a>)</strong> 로 올리셨다면 기존 API 키 · 기관 키 잠금 · 프롬프트 · 템플릿이 자동으로 그대로 유지됩니다.
+            반면 배포 폴더(<span class="mono">DRM_AI_설치및업데이트.bat</span>)의 업데이트는 추가 기능 파일을 새 파일로 바꾸므로 비어 있을 수 있습니다 —
             본인 키를 쓰는 분은 <a href="#secC4b">4-4-2</a> 로 다시 넣고,
             <strong>기관 키 파일을 받은 분은 보관해 둔 그 파일을 7. 기관 키 파일 가져오기 로 다시 넣으세요</strong>(파일은 버리지 마세요).
             잠긴 설치 파일(A 길)은 새 파일도 잠긴 채 오므로 할 일이 없습니다.</span></li>
@@ -1197,6 +1317,13 @@
         <tr>
           <td>설치·덮어쓰기 중 <strong>파일 오류</strong></td>
           <td>엑셀·워드·올인원을 모두 종료한 뒤 다시 시도하세요. 백신 검사 중이면 끝난 뒤 진행합니다.</td>
+        </tr>
+        <tr>
+          <td>자동 업데이트 중 <strong>"저장하지 않은 Excel 문서가 열려 있습니다"</strong> 또는<br />
+              <strong>"실행 중인 Excel 창이 있습니다"</strong> 안내가 나옴</td>
+          <td>작업 중이던 엑셀 문서를 보호하기 위해 안내하는 창입니다.<br />
+              ① 저장해야 할 문서가 있다면 확인 창에서 <strong>[아니오]</strong> 를 누른 뒤 엑셀에서 문서를 저장하고 다시 <strong><span class="mono">[업데이트 설치]</span></strong> 를 누르세요.<br />
+              ② 따로 저장할 내용이 없거나 바로 진행하시려면 확인 창에서 <strong>[예]</strong> 를 누르면 엑셀이 안전하게 정리된 뒤 업데이트 설치 후 자동으로 다시 실행됩니다 (<a href="#secAutoUpdate">1-3</a>).</td>
         </tr>
         <tr>
           <td><span class="mono">python</span> 명령이 인식되지 않음</td>
@@ -1554,7 +1681,19 @@
 
       <h3>Q8. 개인 프롬프트·템플릿을 백업하지 않고 업데이트했어요.</h3>
       <p>먼저 학교 관리자(없으면 배포자)에게 문의하세요.
-         이후에는 업데이트 <strong>전에</strong> 반드시 <a href="#backup">2-4</a>의 백업을 먼저 수행하시기 바랍니다.</p>
+         이후에는 배포 폴더(<span class="mono">DRM_AI_설치및업데이트.bat</span>)로 업데이트하기 <strong>전에</strong> 반드시 <a href="#backup">2-4</a>의 백업을 먼저 수행하시거나,
+         백업 없이 모든 설정이 자동 보존되는 <strong>엑셀 안 <a href="#secAutoUpdate">「자동 업데이트」(1-3)</a></strong>를 이용하시기 바랍니다.</p>
+
+      <h3>Q9. 새 버전이 나올 때마다 매번 압축 파일(<span class="mono">.zip</span>)을 받아서 다시 설치해야 하나요?</h3>
+      <p>아니요. 이미 v10.7 이상이 설치된 PC라면 새 압축 파일을 받으실 필요가 없습니다.
+         엑셀을 켜 두면 새 버전이 나왔을 때 <strong>「DRM AI 업데이트」</strong> 알림 창이 자동으로 뜨거나,
+         언제든 <strong>[데이터] 탭 → [API 메뉴] 그룹 → <span class="mono">DRM AI v0.0</span> → [안내 및 설정] → <span class="mono">[업데이트 확인]</span></strong> 을 눌러
+         <strong><span class="mono">[새 버전 받기]</span> → <span class="mono">[업데이트 설치]</span></strong> 단추 두 번으로 간편하게 업데이트하실 수 있습니다 (<a href="#secAutoUpdate">1-3</a>).</p>
+
+      <h3>Q10. 자동 업데이트를 하면 기존에 넣어 둔 API 키나 개인 프롬프트·템플릿이 지워지지 않나요?</h3>
+      <p>전혀 지워지지 않습니다. 엑셀 안 <strong><span class="mono">[업데이트 확인]</span> 자동 업데이트</strong>는
+         기존에 저장된 <strong>본인 API 키, 학교 기관 키 잠금, 개인 프롬프트, 템플릿을 100% 그대로 보존</strong>하여 새 버전에 옮겨 줍니다.
+         설치가 끝나면 엑셀도 자동으로 다시 켜지므로 바로 이어서 사용하시면 됩니다.</p>
     </div>
 
     <!-- ===================== 8. 링크 ===================== -->
