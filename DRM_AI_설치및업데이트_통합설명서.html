@@ -190,7 +190,7 @@
           <td><span class="mono">DRM AI v0.0</span></td>
           <td>엑셀 <strong>[데이터] 탭 → [API 메뉴] 그룹</strong>에 있는 <strong>DRM AI 단추</strong></td>
           <td>단추 이름 끝에 받은 파일의 <strong>판 숫자</strong>가 붙어 보입니다.
-              이 단추를 누르면 [일반 기능] · [GPT 실행] · [Gemini 실행] · [안내 및 설정] 메뉴가 펼쳐집니다.</td>
+              이 단추를 누르면 [일반 기능] · [GPT 실행] · [Gemini 실행] · [구독형 AI 보조] · [안내 및 설정] 메뉴가 펼쳐집니다.</td>
         </tr>
         <tr>
           <td><span class="placeholder">학교명</span></td>
@@ -755,7 +755,7 @@
         <li>엑셀을 <strong>새로 실행</strong>합니다. (설치 중에 켜 두었던 엑셀은 완전히 종료한 뒤 다시 실행)</li>
         <li>엑셀 상단의 <strong>[데이터] 탭</strong>을 누릅니다.</li>
         <li><strong>[API 메뉴] 그룹</strong>에 <strong><span class="mono">DRM AI v0.0</span> 단추</strong>가 있는지 확인합니다.
-            <span class="small">(숫자는 받은 파일의 판에 따라 다릅니다. 이 단추를 누르면 [일반 기능] · [GPT 실행] · [Gemini 실행] · [안내 및 설정] 메뉴가 펼쳐집니다)</span></li>
+            <span class="small">(숫자는 받은 파일의 판에 따라 다릅니다. 이 단추를 누르면 [일반 기능] · [GPT 실행] · [Gemini 실행] · [구독형 AI 보조] · [안내 및 설정] 메뉴가 펼쳐집니다)</span></li>
       </ol>
       <div class="note warn">
         <strong>메뉴나 버튼이 보이지 않으면 4-2 이후를 진행할 수 없습니다.</strong>
@@ -1064,6 +1064,16 @@
                 <span class="mono">gemini-3.1-pro-preview</span>(심층 추론). flash 두 모델은 Temperature 대신 <strong>사고 수준</strong>(low / medium / high)을 씁니다.
                 <span class="small">영상 맞춤 TTS 의 영상 분석은 설정과 무관하게 3.7 로 고정됩니다.</span></td></tr>
       </table>
+
+      <div class="note ok">
+        <strong>별도 API 충전 없이 월정액 구독 계정으로 쓰는 보조 방법 — [구독형 AI 보조]</strong>
+        <p style="margin:8px 0 0">Claude 나 ChatGPT 유료 구독 계정을 이미 쓰고 계신다면,
+           엑셀 상단 <strong>[구독형 AI 보조] → <span class="mono">[구독형 AI 연결 점검 및 로그인]</span></strong> 에서
+           이 PC의 공식 프로그램 설치·로그인 상태를 확인한 뒤,
+           <strong><span class="mono">[구독형 AI로 행 단위 보조 처리]</span></strong> 로 별도 API 요금 없이 각 행의 글이나 <strong>파일 경로(또는 하이퍼링크)만 적힌 칸</strong>을 동시 1~3행으로 병렬 처리해 결과 열에 답을 받을 수 있습니다.</p>
+        <p class="small" style="margin:6px 0 0"><strong>지원 파일:</strong> PDF · 이미지(PNG·JPG·WEBP·GIF·BMP) · 텍스트(TXT·CSV·HTML·MD 등) · 워드(DOCX) · 한글 표준(HWPX) · 엑셀(XLSX·XLSM) · 발표자료(PPTX) — Claude 구독과 ChatGPT(Codex) 구독 모두 지원하며, 학생 학번·성명은 전송 전 자동 가명화 후 결과 칸에서 복원됩니다.<br>
+           <strong>지원 제외 항목 안내:</strong> 구독형 AI 보안 격리 방식에서는 <strong>음성·동영상·구형 한글(.hwp)·외부 인터넷 주소 직접 접속</strong>은 지원하지 않습니다(실행 전후 안내 표시). 음성·웹 주소 분석은 <strong>[GPT 실행]</strong> 또는 <strong>[Gemini 실행]</strong> 메뉴를, 동영상 분석은 <strong>[Gemini 실행]</strong> 메뉴를 이용하시고, 구형 <span class="mono">.hwp</span> 문서는 한글에서 <span class="mono">.hwpx</span> 또는 <span class="mono">.pdf</span>로 저장해 실행하세요. 수십~수백 행을 빠르게 대량 처리할 때도 기존 API 병렬 메뉴가 훨씬 빠릅니다.</p>
+      </div>
 
       <div class="note danger">
         <strong>본인 키는 본인 계정으로 청구됩니다 — 파일을 남에게 주지 마세요.</strong>
@@ -1591,7 +1601,7 @@
          권한 오류가 나면 첫 줄만 <span class="mono">python -m pip install --user --upgrade pip</span> 로 바꿔 실행하세요.</p>
 
       <h4>③ "파일을 찾을 수 없다"는 오류가 날 때 — Python 파일 확인</h4>
-      <p>배포 폴더의 <span class="mono">.py</span> 파일 <strong>14개</strong>가
+      <p>배포 폴더의 <span class="mono">.py</span> 파일 <strong>15개</strong>가
          <span class="mono">C:\MyTrustedFiles</span> 에 모두 있어야 합니다. 없으면 그 폴더로 복사(덮어쓰기)하세요.
          <span class="small">(<span class="mono">C:\MyTrustedFiles</span> 폴더 자체가 없으면
          <span class="mono">C:\</span> 에 <strong>MyTrustedFiles</strong> 라는 이름으로 새 폴더를 만든 뒤 복사하세요)</span></p>
@@ -1620,6 +1630,9 @@
         <tr>
           <td><span class="mono">drm_pdf.py</span></td><td><span class="small">(PDF 엔진 — PDF 를 읽고 학생 정보를 가리는 기능이 함께 씁니다)</span></td>
         </tr>
+        <tr>
+          <td><span class="mono">drm_cli_ai.py</span></td><td><span class="small">(구독형 AI 보조 연결 — 구독 로그인 계정으로 엑셀 행 처리를 도울 때 함께 씁니다)</span></td>
+        </tr>
       </table>
       <p class="small"><span class="mono">.xlam</span> 파일은 이 폴더에 넣지 않습니다. 다른 폴더에 두면 기능이 동작하지 않습니다.</p>
 
@@ -1639,7 +1652,7 @@
         <li>이어서 위 <strong>②·③</strong> 으로 Python 패키지와 파일을 갖추고,
             <a href="#secC1">4-1</a> 의 <strong>[찾아보기] 등록</strong>까지 하면 설치가 완료됩니다.</li>
       </ol>
-      <p class="small"><strong>③ 의 <span class="mono">.py</span> 14개(<span class="mono">drm_pseudonym.py</span> · <span class="mono">drm_pdf.py</span> 포함)를 모두 복사하고
+      <p class="small"><strong>③ 의 <span class="mono">.py</span> 15개(<span class="mono">drm_pseudonym.py</span> · <span class="mono">drm_pdf.py</span> · <span class="mono">drm_cli_ai.py</span> 포함)를 모두 복사하고
          ② 의 PDF 도구 명령 두 줄(둘째 줄이 <span class="mono">True</span> 로 끝남)까지 마쳐야 합니다.</strong>
          하나라도 빠지면 첨부 파일이 있는 행 단위 처리는 <strong>"설치된 파이썬 도우미가 옛 판이라"</strong> 창을 띄우고
          실행하지 않거나, PDF 첨부를 AI 로 보내지 않습니다(학생 정보를 가리지 못한 채 보내지 않기 위해서입니다).</p>
